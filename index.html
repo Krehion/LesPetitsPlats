@@ -15,6 +15,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 	</head>
 	<body>
+		<!---------- HEADER ---------->
 		<header>
 			<nav class="navbar">
 				<div class="container-fluid">
@@ -30,13 +31,54 @@
 				<form class="d-flex justify-content-center h-100">
 					<div class="search container-lg">
 						<input type="text" class="search-input" placeholder="Rechercher une recette, un ingrédient, ..." name="" />
-						<a href="#" class="search-icon">
+						<a href="#" class="search--icon">
 							<i class="fa fa-search"></i>
 						</a>
 					</div>
 				</form>
 			</div>
 		</header>
+		<!---------- END HEADER  ---------->
+		<!---------- FILTERS ---------->
+		<section class="filters">
+			<div class="dropdown">
+				<div class="dropdown--toggle">
+					<label for="dropdown--ingredients--check">Ingrédients</label>
+					<i class="fa-solid fa-chevron-down"></i>
+					<input type="checkbox" name="dropdown--ingredients--check" id="dropdown--ingredients--check" />
+				</div>
+				<div class="dropdown--search">
+					<input type="text" class="dropdown--search--input" />
+					<i class="fa fa-search"></i>
+				</div>
+			</div>
+			<div class="dropdown">
+				<div class="dropdown--toggle">
+					<label for="dropdown--appareils--check">Appareils</label>
+					<i class="fa-solid fa-chevron-down"></i>
+					<input type="checkbox" name="dropdown--appareils--check" id="dropdown--appareils--check" />
+				</div>
+				<div class="dropdown--search">
+					<input type="text" class="dropdown--search--input" />
+					<i class="fa fa-search"></i>
+				</div>
+			</div>
+			<div class="dropdown">
+				<div class="dropdown--toggle">
+					<label for="dropdown--ustensiles--check">Ustensiles</label>
+					<i class="fa-solid fa-chevron-down"></i>
+					<input type="checkbox" name="dropdown--ustensiles--check" id="dropdown--ustensiles--check" />
+				</div>
+				<div class="dropdown--search">
+					<input type="text" class="dropdown--search--input" />
+					<i class="fa fa-search"></i>
+				</div>
+			</div>
+		</section>
+		<!---------- END FILTERS ---------->
+		<!---------- RECIPE CARDS ---------->
+		<section class="recipes"></section>
+		<!---------- END RECIPE CARDS ---------->
 		<!-- Scripts -->
 		<!-- Bootstrap -->
 		<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -5,6 +5,15 @@ h2,
   font-family: "Anton", sans-serif;
 }
 
+body {
+  min-height: 100vh;
+  background-color: #7a7a7a;
+}
+
+input:focus {
+  outline-style: none;
+}
+
 header {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%), url(/assets/images/main-bkgd.jpg) lightgray 50%/cover no-repeat;
   height: 65vh;
@@ -39,7 +48,7 @@ header .search input {
   background: transparent;
   width: 100%;
 }
-header .search .search-icon {
+header .search--icon {
   background-color: #000000;
   height: 50px;
   width: 50px;
@@ -50,9 +59,58 @@ header .search .search-icon {
   align-items: center;
   text-decoration: none;
 }
-header .search .search-icon:hover {
+header .search--icon:hover {
   background-color: #ffd15b;
   color: #000000;
+}
+
+.filters {
+  padding: 25px 70px;
+  display: flex;
+  flex-direction: row;
+  gap: 63px;
+}
+.filters .dropdown {
+  background: #fff;
+  border-radius: 11px;
+  padding: 0 15px;
+}
+.filters .dropdown:hover * {
+  cursor: pointer;
+}
+.filters .dropdown--toggle {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 63px;
+  align-items: center;
+}
+.filters .dropdown--toggle input {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.filters .dropdown--search {
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  color: #c6c6c6;
+  border: 1px solid #c6c6c6;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+.filters .dropdown--search input {
+  border: none;
+  flex: auto;
+  width: 50px;
+  color: #7a7a7a;
 }
 
 /*!
@@ -136,8 +194,8 @@ header .search .search-icon:hover {
   --mo-body-line-height: 1.5;
   --mo-body-color: #212529;
   --mo-body-color-rgb: 33, 37, 41;
-  --mo-body-bg: #fff;
-  --mo-body-bg-rgb: 255, 255, 255;
+  --mo-body-bg: #e5e5e5;
+  --mo-body-bg-rgb: 229, 229, 229;
   --mo-emphasis-color: #000;
   --mo-emphasis-color-rgb: 0, 0, 0;
   --mo-secondary-color: rgba(33, 37, 41, 0.75);
@@ -2515,10 +2573,10 @@ textarea.form-control-lg {
   outline: 0;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(255, 209, 91, 0.25);
+  box-shadow: 0 0 0 1px #e5e5e5, 0 0 0 0.25rem rgba(255, 209, 91, 0.25);
 }
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(255, 209, 91, 0.25);
+  box-shadow: 0 0 0 1px #e5e5e5, 0 0 0 0.25rem rgba(255, 209, 91, 0.25);
 }
 .form-range::-moz-focus-outer {
   border: 0;
