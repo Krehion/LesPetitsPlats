@@ -1,0 +1,13 @@
+h1,
+h2 {
+	font-family: "Anton", sans-serif;
+}
+
+body {
+	min-height: 100vh;
+	background-color: $gray;
+}
+
+input:focus {
+	outline-style: none;
+}

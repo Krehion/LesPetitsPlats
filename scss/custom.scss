@@ -1,19 +1,10 @@
-// Variable overrides
-$font-family-base: "Manrope", sans-serif;
-$primary: #ffd15b;
-$secondary: #000000;
-$gray: #6c757d;
-$enable-shadows: true;
-$prefix: "mo-";
-
 // General
-h1,
-h2 {
-	font-family: "Anton", sans-serif;
-}
+@import "_variables.scss";
+@import "_general.scss";
 
-// Specific
+// Components
 @import "_header.scss";
+@import "_filters.scss";
 
 // import Bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap";
