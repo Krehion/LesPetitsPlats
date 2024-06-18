@@ -1,0 +1,56 @@
+header {
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%),
+		url(/assets/images/main-bkgd.jpg) lightgray 50% / cover no-repeat;
+	height: 65vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	.navbar-logo {
+		width: 207px;
+		margin: 30px;
+		position: fixed;
+		top: 0;
+	}
+
+	h1 {
+		color: $primary;
+		text-transform: uppercase;
+		text-align: center;
+		text-wrap: balance;
+		font-size: 44px;
+		margin: 2.5rem 0;
+	}
+
+	.search {
+		height: 70px;
+		background-color: #fff;
+		padding: 10px;
+		display: flex;
+		justify-content: space-between;
+		border-radius: 11px;
+
+		input {
+			border: 0;
+			background: transparent;
+			width: 100%;
+		}
+
+		.search-icon {
+			background-color: #000000;
+			height: 50px;
+			width: 50px;
+			border-radius: 11px;
+			color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-decoration: none;
+
+			&:hover {
+				background-color: $primary;
+				color: #000000;
+			}
+		}
+	}
+}
