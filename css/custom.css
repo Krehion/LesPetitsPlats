@@ -78,6 +78,13 @@ header .search--icon:hover {
 .filters .dropdown:hover * {
   cursor: pointer;
 }
+.filters .dropdown__closed {
+  height: 50px;
+  overflow: hidden;
+}
+.filters .dropdown__closed .fa-chevron-up {
+  transform: rotate(180deg);
+}
 .filters .dropdown--toggle {
   width: 100%;
   height: 50px;
@@ -97,7 +104,7 @@ header .search--icon:hover {
 .filters .dropdown--search {
   padding: 5px 10px;
   margin-bottom: 15px;
-  color: #c6c6c6;
+  color: #7a7a7a;
   border: 1px solid #c6c6c6;
   border-radius: 3px;
   display: flex;
@@ -111,6 +118,12 @@ header .search--icon:hover {
   flex: auto;
   width: 50px;
   color: #7a7a7a;
+}
+.filters .dropdown--search--cancel {
+  border: none;
+  background-color: transparent;
+  color: #7a7a7a;
+  visibility: hidden;
 }
 
 /*!
