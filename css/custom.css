@@ -24,7 +24,7 @@ header {
 header .navbar-logo {
   width: 207px;
   margin: 30px;
-  position: fixed;
+  position: absolute;
   top: 0;
 }
 header h1, header .h1 {
@@ -124,6 +124,71 @@ header .search--icon:hover {
   background-color: transparent;
   color: #7a7a7a;
   visibility: hidden;
+}
+
+.recipes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+  margin: 0 70px;
+}
+.recipes--card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+  border-radius: 21px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0px 4px 34px 30px rgba(0, 0, 0, 0.04);
+  margin-bottom: 30px;
+}
+.recipes--card--img-container {
+  width: 100%;
+  height: 253px;
+  overflow: hidden;
+}
+.recipes--card--img-container img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.recipes--card--txt-container {
+  padding: 25px;
+}
+.recipes--card--txt-container h2, .recipes--card--txt-container .h2 {
+  font-size: 1.25rem;
+  margin: 0.5rem 0 0 0;
+}
+.recipes--card--txt-container h3, .recipes--card--txt-container .h3 {
+  font-size: 1rem;
+  color: #7a7a7a;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 2rem 0 1rem 0;
+}
+.recipes--card--txt-container .ingredients-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.recipes--card--txt-container .ingredients-grid--name {
+  margin: 0;
+}
+.recipes--card--txt-container .ingredients-grid--detail {
+  color: #7a7a7a;
+}
+.recipes--card--time-container {
+  position: absolute;
+  top: 21px;
+  right: 22px;
+  z-index: 100;
+  display: flex;
+  background-color: #ffd15b;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+.recipes--card--time-container p {
+  margin: 0;
 }
 
 /*!
