@@ -20,11 +20,47 @@ async function displayRecipes(recipes) {
 	});
 }
 
+async function getIngredients() {
+	const recipes = await getRecipes();
+	const ingredientsSet = new Set(); // Set allows only one iteration of every value
+
+	recipes.forEach((recipe) => {
+		recipe.ingredients.forEach((item) => {
+			ingredientsSet.add(item.ingredient);
+		});
+	});
+
+	// Convert the set to an array
+	const ingredientsKeywords = Array.from(ingredientsSet);
+	return ingredientsKeywords;
+}
+
+async function getAppareils() {}
+
+async function getUstensiles() {}
+
+async function displayDropdownKeywords(ingredientsKeywords) {
+	const ingredientsKeywordsSection = document.querySelector(".dropdown-ingredients--keywords");
+
+	ingredientsKeywords.forEach((ingredient) => {
+		console.log(ingredient);
+		const keywordModel = dropdownKeywordTemplate(ingredient);
+		const keywordDOM = keywordModel.getKeywordDOM();
+		ingredientsKeywordsSection.appendChild(keywordDOM);
+	});
+}
+
 async function init() {
 	// fetch recipes' data
-	const recipes = await getRecipes(); // Get the recipes array directly
+	const recipes = await getRecipes(); // Get the recipes array
 	// access the recipes array
 	displayRecipes(recipes);
+
+	const ingredientsKeywords = await getIngredients();
+
+	displayDropdownKeywords(ingredientsKeywords);
+
+	unfoldDropdown();
 }
 
 init();

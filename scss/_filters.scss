@@ -3,14 +3,21 @@
 	display: flex;
 	flex-direction: row;
 	gap: 63px;
+	max-height: 101.2px;
+	position: relative;
+	z-index: 100;
 
 	.dropdown {
 		background: #fff;
 		border-radius: 11px;
-		padding: 0 15px;
+		overflow: hidden;
 
 		&:hover * {
 			cursor: pointer;
+		}
+
+		&__open {
+			height: fit-content;
 		}
 
 		&__closed {
@@ -25,23 +32,24 @@
 		&--toggle {
 			width: 100%;
 			height: 50px;
+			padding: 0 15px;
 			display: flex;
 			flex-direction: row;
 			gap: 63px;
 			align-items: center;
 
 			input {
-				visibility: hidden;
+				opacity: 0;
 				position: absolute;
 				top: 0;
 				left: 0;
 				width: 100%;
-				height: 100%;
+				height: 50px;
 			}
 		}
 		&--search {
 			padding: 5px 10px;
-			margin-bottom: 15px;
+			margin: 0 15px 15px 15px;
 			color: $gray;
 			border: 1px solid $gray-light;
 			border-radius: 3px;
@@ -65,5 +73,33 @@
 				visibility: hidden;
 			}
 		}
+
+		.dropdown-ingredients--keywords {
+			display: flex;
+			flex-direction: column;
+			max-height: 200px;
+			box-sizing: border-box;
+			overflow: scroll;
+
+			&--container {
+				width: 193.45px;
+				box-sizing: border-box;
+				border: none;
+				background-color: #fff;
+				text-align: left;
+				padding: 5px 15px;
+
+				&:hover {
+					background-color: #ffd15b;
+				}
+			}
+		}
+	}
+
+	.total-recipes {
+		font-family: "Anton", sans-serif;
+		font-size: 1.3rem;
+		margin: 0 0 0 auto;
+		padding: 10px 0;
 	}
 }

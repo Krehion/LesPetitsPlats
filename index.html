@@ -38,7 +38,7 @@
 		<!---------- END HEADER  ---------->
 		<!---------- FILTERS ---------->
 		<section class="filters">
-			<div class="dropdown">
+			<div class="dropdown dropdown__closed dropdown-ingredients">
 				<div class="dropdown--toggle">
 					<label for="dropdown--ingredients--check">Ingrédients</label>
 					<i class="fa-solid fa-chevron-up"></i>
@@ -51,8 +51,9 @@
 					</button>
 					<i class="fa fa-search"></i>
 				</div>
+				<div class="dropdown-ingredients--keywords"></div>
 			</div>
-			<div class="dropdown">
+			<div class="dropdown dropdown__closed dropdown-appareils">
 				<div class="dropdown--toggle">
 					<label for="dropdown--appareils--check">Appareils</label>
 					<i class="fa-solid fa-chevron-up"></i>
@@ -65,8 +66,9 @@
 					</button>
 					<i class="fa fa-search"></i>
 				</div>
+				<div class="dropdown-appareils--keywords"></div>
 			</div>
-			<div class="dropdown dropdown__closed">
+			<div class="dropdown dropdown__closed dropdown-ustensiles">
 				<div class="dropdown--toggle">
 					<label for="dropdown--ustensiles--check">Ustensiles</label>
 					<i class="fa-solid fa-chevron-up"></i>
@@ -79,7 +81,9 @@
 					</button>
 					<i class="fa fa-search"></i>
 				</div>
+				<div class="dropdown-ustensiles--keywords"></div>
 			</div>
+			<p class="total-recipes"><span class="total-recipes--number">50</span> recettes</p>
 		</section>
 		<!---------- END FILTERS ---------->
 		<!---------- RECIPE CARDS ---------->
@@ -87,6 +91,8 @@
 		<!---------- END RECIPE CARDS ---------->
 		<!-- Scripts -->
 		<script src="scripts/templates/recipeCard.js"></script>
+		<script src="scripts/templates/dropdownKeyword.js"></script>
+		<script src="scripts/utils/dropdowns.js"></script>
 		<script src="scripts/pages/index.js"></script>
 		<!-- Bootstrap -->
 		<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
