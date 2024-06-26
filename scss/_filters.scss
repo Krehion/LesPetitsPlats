@@ -2,10 +2,10 @@
 	padding: 25px 70px;
 	display: flex;
 	flex-direction: row;
-	gap: 63px;
+	gap: 50px;
 	max-height: 101.2px;
 	position: relative;
-	z-index: 100;
+	z-index: 200;
 
 	.dropdown {
 		background: #fff;
@@ -31,12 +31,13 @@
 
 		&--toggle {
 			width: 100%;
+			min-width: 180px;
 			height: 50px;
 			padding: 0 15px;
 			display: flex;
 			flex-direction: row;
-			gap: 63px;
 			align-items: center;
+			justify-content: space-between;
 
 			input {
 				opacity: 0;
@@ -74,12 +75,14 @@
 			}
 		}
 
-		.dropdown-ingredients--keywords {
+		.dropdown-ingredients--keywords,
+		.dropdown-appareils--keywords,
+		.dropdown-ustensiles--keywords {
 			display: flex;
 			flex-direction: column;
 			max-height: 200px;
 			box-sizing: border-box;
-			overflow: scroll;
+			overflow-y: scroll;
 
 			&--container {
 				width: 193.45px;

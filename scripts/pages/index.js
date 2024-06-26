@@ -20,8 +20,7 @@ async function displayRecipes(recipes) {
 	});
 }
 
-async function getIngredients() {
-	const recipes = await getRecipes();
+async function getIngredients(recipes) {
 	const ingredientsSet = new Set(); // Set allows only one iteration of every value
 
 	recipes.forEach((recipe) => {
@@ -35,15 +34,32 @@ async function getIngredients() {
 	return ingredientsKeywords;
 }
 
-async function getAppareils() {}
+async function getAppareils(recipes) {
+	const applianceSet = new Set();
 
-async function getUstensiles() {}
+	recipes.forEach((recipe) => {
+		applianceSet.add(recipe.appliance);
+	});
 
-async function displayDropdownKeywords(ingredientsKeywords) {
-	const ingredientsKeywordsSection = document.querySelector(".dropdown-ingredients--keywords");
+	const appareilsKeywords = Array.from(applianceSet);
+	return appareilsKeywords;
+}
 
+async function getUstensiles(recipes) {
+	const ustensilesSet = new Set();
+
+	recipes.forEach((recipe) => {
+		recipe.ustensils.forEach((ustensil) => {
+			ustensilesSet.add(ustensil);
+		});
+	});
+
+	const ustensilesKeywords = Array.from(ustensilesSet);
+	return ustensilesKeywords;
+}
+
+async function displayDropdownKeywords(ingredientsKeywords, ingredientsKeywordsSection) {
 	ingredientsKeywords.forEach((ingredient) => {
-		console.log(ingredient);
 		const keywordModel = dropdownKeywordTemplate(ingredient);
 		const keywordDOM = keywordModel.getKeywordDOM();
 		ingredientsKeywordsSection.appendChild(keywordDOM);
@@ -56,9 +72,16 @@ async function init() {
 	// access the recipes array
 	displayRecipes(recipes);
 
-	const ingredientsKeywords = await getIngredients();
+	const ingredientsKeywords = await getIngredients(recipes);
+	const ingredientsKeywordsSection = document.querySelector(".dropdown-ingredients--keywords");
+	const ustensilesKeywords = await getUstensiles(recipes);
+	const ustensilesKeywordsSection = document.querySelector(".dropdown-ustensiles--keywords");
+	const appareilsKeywords = await getAppareils(recipes);
+	const appareilsKeywordsSection = document.querySelector(".dropdown-appareils--keywords");
 
-	displayDropdownKeywords(ingredientsKeywords);
+	displayDropdownKeywords(ingredientsKeywords, ingredientsKeywordsSection);
+	displayDropdownKeywords(ustensilesKeywords, ustensilesKeywordsSection);
+	displayDropdownKeywords(appareilsKeywords, appareilsKeywordsSection);
 
 	unfoldDropdown();
 }
