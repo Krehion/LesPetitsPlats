@@ -9,6 +9,5 @@ function recipeCounter() {
 
 	counterContainer.innerHTML = sum;
 
-	console.log(sum);
-	// return counterContainer;
+	return counterContainer;
 }
