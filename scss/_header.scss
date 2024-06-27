@@ -31,16 +31,45 @@ header {
 		justify-content: space-between;
 		border-radius: 11px;
 
-		input {
+		input[type="search"] {
 			border: 0;
 			background: transparent;
 			width: 100%;
+			color: $gray;
+		}
+
+		&--cancel {
+			background-color: transparent;
+			border: none;
+			color: $gray;
+			width: 16px;
+			height: 50px;
+			margin-right: 10px;
+
+			&--container {
+				position: relative;
+				display: none;
+
+				&::before {
+					content: "";
+					display: block;
+					background: url(../assets/icons/cancel.svg) no-repeat center;
+					width: 16px;
+					height: 50px;
+					position: absolute;
+					top: 0;
+					left: 0;
+					pointer-events: none; // makes the pseudo-element unclickable
+				}
+			}
 		}
 
 		&--icon {
 			background-color: #000000;
+			border: none;
 			height: 50px;
 			width: 50px;
+			min-width: 50px;
 			border-radius: 11px;
 			color: #fff;
 			display: flex;

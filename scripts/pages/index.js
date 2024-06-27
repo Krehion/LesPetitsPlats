@@ -84,6 +84,7 @@ async function init() {
 	displayDropdownKeywords(appareilsKeywords, appareilsKeywordsSection);
 
 	unfoldDropdown();
+	displayCancelSearch();
 }
 
 init();
