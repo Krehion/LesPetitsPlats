@@ -85,6 +85,8 @@ async function init() {
 	displayDropdownKeywords(appareilsKeywords, appareilsKeywordsSection);
 
 	unfoldDropdown();
+
+	keywordsInputFilter();
 }
 
 init();
