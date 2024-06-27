@@ -11,3 +11,7 @@ body {
 input:focus {
 	outline-style: none;
 }
+
+input[type="search"]:hover {
+	cursor: text;
+}

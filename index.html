@@ -51,13 +51,13 @@
 					<i class="fa-solid fa-chevron-up"></i>
 					<input type="checkbox" name="dropdown--ingredients--check" id="dropdown--ingredients--check" />
 				</div>
-				<div class="dropdown--search">
+				<form class="dropdown--search">
 					<input type="search" class="dropdown--search--input" />
-					<button class="dropdown--search--cancel">
-						<i class="fa-solid fa-xmark"></i>
-					</button>
+					<div class="dropdown--search--cancel--container">
+						<input type="reset" value=" " alt="Clear the search form" class="dropdown--search--cancel" />
+					</div>
 					<i class="fa fa-search"></i>
-				</div>
+				</form>
 				<div class="dropdown-ingredients--keywords__selected"></div>
 				<div class="dropdown-ingredients--keywords"></div>
 			</div>
@@ -67,13 +67,13 @@
 					<i class="fa-solid fa-chevron-up"></i>
 					<input type="checkbox" name="dropdown--appareils--check" id="dropdown--appareils--check" />
 				</div>
-				<div class="dropdown--search">
+				<form class="dropdown--search">
 					<input type="search" class="dropdown--search--input" />
-					<button class="dropdown--search--cancel">
-						<i class="fa-solid fa-xmark"></i>
-					</button>
+					<div class="dropdown--search--cancel--container">
+						<input type="reset" value=" " alt="Clear the search form" class="dropdown--search--cancel" />
+					</div>
 					<i class="fa fa-search"></i>
-				</div>
+				</form>
 				<div class="dropdown-appareils--keywords__selected"></div>
 				<div class="dropdown-appareils--keywords"></div>
 			</div>
@@ -83,13 +83,13 @@
 					<i class="fa-solid fa-chevron-up"></i>
 					<input type="checkbox" name="dropdown--ustensiles--check" id="dropdown--ustensiles--check" />
 				</div>
-				<div class="dropdown--search">
+				<form class="dropdown--search">
 					<input type="search" class="dropdown--search--input" />
-					<button class="dropdown--search--cancel">
-						<i class="fa-solid fa-xmark"></i>
-					</button>
+					<div class="dropdown--search--cancel--container">
+						<input type="reset" value=" " alt="Clear the search form" class="dropdown--search--cancel" />
+					</div>
 					<i class="fa fa-search"></i>
-				</div>
+				</form>
 				<div class="dropdown-ustensiles--keywords__selected"></div>
 				<div class="dropdown-ustensiles--keywords"></div>
 			</div>
@@ -106,8 +106,11 @@
 		<script src="scripts/templates/recipeCard.js"></script>
 		<script src="scripts/templates/dropdownKeyword.js"></script>
 		<script src="scripts/utils/dropdowns.js"></script>
+		<script src="scripts/utils/dropdown-searchbars.js"></script>
 		<script src="scripts/utils/main-searchbar.js"></script>
+		<script src="scripts/utils/recipe-counter.js"></script>
 		<script src="scripts/pages/index.js"></script>
+
 		<!-- Bootstrap -->
 		<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	</body>

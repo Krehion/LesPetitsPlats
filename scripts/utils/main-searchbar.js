@@ -1,4 +1,4 @@
-function displayCancelSearch() {
+function displayCancelSearchMain() {
 	const searchInput = document.querySelector(".search-input");
 	const cancelContainer = document.querySelector(".search--cancel--container");
 	const cancelInput = document.querySelector(".search--cancel");
@@ -14,6 +14,9 @@ function displayCancelSearch() {
 	cancelInput.addEventListener("click", () => {
 		if (cancelContainer.style.display === "inline-block") {
 			cancelContainer.style.display = "none";
+			searchInput.value = "";
 		}
 	});
 }
+
+displayCancelSearchMain();

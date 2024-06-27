@@ -60,7 +60,7 @@
 			justify-content: space-between;
 			font-size: 0.9rem;
 
-			input {
+			input[type="search"] {
 				border: none;
 				flex: auto;
 				width: 50px;
@@ -68,10 +68,30 @@
 			}
 
 			&--cancel {
-				border: none;
 				background-color: transparent;
+				border: none;
 				color: $gray;
-				visibility: hidden;
+				width: 16px;
+				height: 23.6px;
+				margin-right: 10px;
+
+				&--container {
+					position: relative;
+					display: none;
+
+					&::before {
+						content: "";
+						display: block;
+						background: url(../assets/icons/cancel.svg) no-repeat center;
+						background-size: 11px;
+						width: 16px;
+						height: 23.6px;
+						position: absolute;
+						top: 0;
+						left: 0;
+						pointer-events: none; // makes the pseudo-element unclickable
+					}
+				}
 			}
 		}
 
