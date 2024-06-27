@@ -71,6 +71,7 @@ async function init() {
 	const recipes = await getRecipes(); // Get the recipes array
 	// access the recipes array
 	displayRecipes(recipes);
+	recipeCounter();
 
 	const ingredientsKeywords = await getIngredients(recipes);
 	const ingredientsKeywordsSection = document.querySelector(".dropdown-ingredients--keywords");
@@ -84,7 +85,6 @@ async function init() {
 	displayDropdownKeywords(appareilsKeywords, appareilsKeywordsSection);
 
 	unfoldDropdown();
-	displayCancelSearch();
 }
 
 init();
