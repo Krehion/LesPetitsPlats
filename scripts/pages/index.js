@@ -83,10 +83,9 @@ async function init() {
 	displayDropdownKeywords(ingredientsKeywords, ingredientsKeywordsSection);
 	displayDropdownKeywords(ustensilesKeywords, ustensilesKeywordsSection);
 	displayDropdownKeywords(appareilsKeywords, appareilsKeywordsSection);
-
 	unfoldDropdown();
-
 	keywordsInputFilter();
+	displayCancelSearchDropdown();
 }
 
 init();

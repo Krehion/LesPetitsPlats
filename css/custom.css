@@ -108,6 +108,7 @@ header .search--icon:hover {
   background: #fff;
   border-radius: 11px;
   overflow: hidden;
+  width: 210px;
 }
 .filters .dropdown:hover * {
   cursor: pointer;

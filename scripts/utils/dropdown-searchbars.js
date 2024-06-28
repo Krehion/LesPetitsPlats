@@ -20,8 +20,10 @@ function displayCancelSearchDropdown() {
 		cancelInput.addEventListener("click", () => {
 			cancelContainer.style.display = "none";
 			searchInput.value = "";
+
+			// trigger the input event to reset the keyword visibility
+			const event = new Event("input", { bubbles: true });
+			searchInput.dispatchEvent(event);
 		});
 	});
 }
-
-displayCancelSearchDropdown();
