@@ -20,52 +20,6 @@ async function displayRecipes(recipes) {
 	});
 }
 
-async function getIngredients(recipes) {
-	const ingredientsSet = new Set(); // Set allows only one iteration of every value
-
-	recipes.forEach((recipe) => {
-		recipe.ingredients.forEach((item) => {
-			ingredientsSet.add(item.ingredient);
-		});
-	});
-
-	// Convert the set to an array
-	const ingredientsKeywords = Array.from(ingredientsSet);
-	return ingredientsKeywords;
-}
-
-async function getAppareils(recipes) {
-	const applianceSet = new Set();
-
-	recipes.forEach((recipe) => {
-		applianceSet.add(recipe.appliance);
-	});
-
-	const appareilsKeywords = Array.from(applianceSet);
-	return appareilsKeywords;
-}
-
-async function getUstensiles(recipes) {
-	const ustensilesSet = new Set();
-
-	recipes.forEach((recipe) => {
-		recipe.ustensils.forEach((ustensil) => {
-			ustensilesSet.add(ustensil);
-		});
-	});
-
-	const ustensilesKeywords = Array.from(ustensilesSet);
-	return ustensilesKeywords;
-}
-
-async function displayDropdownKeywords(ingredientsKeywords, ingredientsKeywordsSection) {
-	ingredientsKeywords.forEach((ingredient) => {
-		const keywordModel = dropdownKeywordTemplate(ingredient);
-		const keywordDOM = keywordModel.getKeywordDOM();
-		ingredientsKeywordsSection.appendChild(keywordDOM);
-	});
-}
-
 async function init() {
 	// fetch recipes' data
 	const recipes = await getRecipes(); // Get the recipes array
@@ -73,6 +27,7 @@ async function init() {
 	displayRecipes(recipes);
 	recipeCounter();
 
+	// fetch keywords arrays
 	const ingredientsKeywords = await getIngredients(recipes);
 	const ingredientsKeywordsSection = document.querySelector(".dropdown-ingredients--keywords");
 	const ustensilesKeywords = await getUstensiles(recipes);

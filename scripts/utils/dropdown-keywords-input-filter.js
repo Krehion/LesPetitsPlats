@@ -23,8 +23,3 @@ function keywordsInputFilter() {
 		});
 	});
 }
-
-// Call the function when the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", function () {
-	keywordsInputFilter();
-});
