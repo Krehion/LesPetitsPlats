@@ -99,7 +99,7 @@ header .search--icon:hover {
   padding: 25px 70px;
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  gap: 40px;
   max-height: 101.2px;
   position: relative;
   z-index: 200;
@@ -212,6 +212,26 @@ header .search--icon:hover {
   font-size: 1.3rem;
   margin: 0 0 0 auto;
   padding: 10px 0;
+}
+
+.active-filters {
+  display: flex;
+  padding: 0 70px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 25px;
+  max-height: 101.2px;
+}
+.active-filters--label {
+  background: #ffd15b;
+  border: none;
+  border-radius: 11px;
+  padding: 13px 15px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
 }
 
 .recipes {

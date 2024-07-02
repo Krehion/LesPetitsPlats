@@ -40,3 +40,11 @@ function unfoldDropdown() {
 		}
 	});
 }
+
+function displayDropdownKeywords(itemKeywords, itemKeywordsSection) {
+	itemKeywords.forEach((item) => {
+		const keywordModel = dropdownKeywordTemplate(item);
+		const keywordDOM = keywordModel.getKeywordDOM();
+		itemKeywordsSection.appendChild(keywordDOM);
+	});
+}

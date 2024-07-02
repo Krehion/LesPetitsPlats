@@ -35,11 +35,3 @@ function getUstensiles(recipes) {
 	const ustensilesKeywords = Array.from(ustensilesSet);
 	return ustensilesKeywords;
 }
-
-function displayDropdownKeywords(ingredientsKeywords, ingredientsKeywordsSection) {
-	ingredientsKeywords.forEach((ingredient) => {
-		const keywordModel = dropdownKeywordTemplate(ingredient);
-		const keywordDOM = keywordModel.getKeywordDOM();
-		ingredientsKeywordsSection.appendChild(keywordDOM);
-	});
-}

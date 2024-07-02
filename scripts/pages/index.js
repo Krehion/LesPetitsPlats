@@ -41,6 +41,9 @@ async function init() {
 	unfoldDropdown();
 	keywordsInputFilter();
 	displayCancelSearchDropdown();
+
+	createLabelFromButton();
+	deleteLabel();
 }
 
 init();

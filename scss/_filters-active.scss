@@ -1,0 +1,20 @@
+.active-filters {
+	display: flex;
+	padding: 0 70px;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 25px;
+	max-height: 101.2px;
+
+	&--label {
+		background: $primary;
+		border: none;
+		border-radius: 11px;
+		padding: 13px 15px;
+		margin-bottom: 25px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 20px;
+	}
+}
