@@ -3,7 +3,7 @@ function dropdownKeywordTemplate(item) {
 		// create the structure
 		const keywordContainer = document.createElement("button");
 		keywordContainer.setAttribute("class", "dropdown-ingredients--keywords--container");
-		keywordContainer.textContent = item;
+		keywordContainer.innerHTML = item + `<i class="fa-solid fa-circle-xmark"></i>`;
 
 		return keywordContainer;
 	}

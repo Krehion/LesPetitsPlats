@@ -42,7 +42,7 @@ async function init() {
 	keywordsInputFilter();
 	displayCancelSearchDropdown();
 
-	createLabelFromButton();
+	createLabel();
 	deleteLabel();
 }
 

@@ -201,11 +201,47 @@ header .search--icon:hover {
   background-color: #fff;
   text-align: left;
   padding: 5px 15px;
+  order: 2;
+}
+.filters .dropdown .dropdown-ingredients--keywords--container .fa-circle-xmark,
+.filters .dropdown .dropdown-appareils--keywords--container .fa-circle-xmark,
+.filters .dropdown .dropdown-ustensiles--keywords--container .fa-circle-xmark {
+  visibility: hidden;
 }
 .filters .dropdown .dropdown-ingredients--keywords--container:hover,
 .filters .dropdown .dropdown-appareils--keywords--container:hover,
 .filters .dropdown .dropdown-ustensiles--keywords--container:hover {
   background-color: #ffd15b;
+}
+.filters .dropdown .dropdown-ingredients--keywords--container__selected,
+.filters .dropdown .dropdown-appareils--keywords--container__selected,
+.filters .dropdown .dropdown-ustensiles--keywords--container__selected {
+  width: 193.45px;
+  box-sizing: border-box;
+  border: none;
+  background-color: #ffd15b;
+  text-align: left;
+  padding: 5px 15px;
+  order: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.filters .dropdown .dropdown-ingredients--keywords--container__selected .fa-circle-xmark,
+.filters .dropdown .dropdown-appareils--keywords--container__selected .fa-circle-xmark,
+.filters .dropdown .dropdown-ustensiles--keywords--container__selected .fa-circle-xmark {
+  visibility: hidden;
+}
+.filters .dropdown .dropdown-ingredients--keywords--container__selected:hover,
+.filters .dropdown .dropdown-appareils--keywords--container__selected:hover,
+.filters .dropdown .dropdown-ustensiles--keywords--container__selected:hover {
+  font-weight: 700;
+}
+.filters .dropdown .dropdown-ingredients--keywords--container__selected:hover .fa-circle-xmark,
+.filters .dropdown .dropdown-appareils--keywords--container__selected:hover .fa-circle-xmark,
+.filters .dropdown .dropdown-ustensiles--keywords--container__selected:hover .fa-circle-xmark {
+  visibility: visible;
 }
 .filters .total-recipes {
   font-family: "Anton", sans-serif;
@@ -214,7 +250,7 @@ header .search--icon:hover {
   padding: 10px 0;
 }
 
-.active-filters {
+.active-labels {
   display: flex;
   padding: 0 70px;
   flex-direction: row;
@@ -222,7 +258,7 @@ header .search--icon:hover {
   gap: 25px;
   max-height: 101.2px;
 }
-.active-filters--label {
+.active-labels--label {
   background: #ffd15b;
   border: none;
   border-radius: 11px;

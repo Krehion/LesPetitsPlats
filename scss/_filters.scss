@@ -112,9 +112,40 @@
 				background-color: #fff;
 				text-align: left;
 				padding: 5px 15px;
+				order: 2;
+
+				.fa-circle-xmark {
+					visibility: hidden;
+				}
 
 				&:hover {
 					background-color: #ffd15b;
+				}
+
+				&__selected {
+					width: 193.45px;
+					box-sizing: border-box;
+					border: none;
+					background-color: #ffd15b;
+					text-align: left;
+					padding: 5px 15px;
+					order: 1;
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					align-items: center;
+
+					.fa-circle-xmark {
+						visibility: hidden;
+					}
+
+					&:hover {
+						font-weight: 700;
+
+						.fa-circle-xmark {
+							visibility: visible;
+						}
+					}
 				}
 			}
 		}
