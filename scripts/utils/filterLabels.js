@@ -1,5 +1,5 @@
-function createLabelFromButton() {
-	const activeFiltersSection = document.querySelector(".active-filters");
+function createLabel() {
+	const activeFiltersSection = document.querySelector(".active-labels");
 
 	// Select all keywords
 	const filterButtons = document.querySelectorAll(".dropdown-ingredients--keywords--container");
@@ -16,6 +16,10 @@ function createLabelFromButton() {
 			activeFilterLabelDOM.addEventListener("click", function () {
 				activeFilterLabelDOM.remove();
 			});
+
+			// Change keyword class to "selected": prevents adding same label twice
+			button.classList.add("dropdown-ingredients--keywords--container__selected");
+			button.classList.remove("dropdown-ingredients--keywords--container");
 		});
 	});
 }
