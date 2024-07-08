@@ -1,121 +1,125 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Les Petits Plats</title>
-		<!-- CSS -->
-		<link rel="stylesheet" href="css/custom.css" />
-		<!-- Favicon -->
-		<link rel="icon" type="image/png" href="assets/icons/favicon.svg" />
-		<!-- Fonts -->
-		<link
-			href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap"
-			rel="stylesheet" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-	</head>
-	<body>
-		<!---------- HEADER ---------->
-		<header>
-			<div class="container-fluid">
-				<img src="assets/images/logo.png" alt="Les Petits Plats" class="navbar-logo" />
-			</div>
 
-			<div class="container-sm">
-				<h1>Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h1>
-			</div>
-			<div class="container-fluid">
-				<form class="d-flex justify-content-center h-100">
-					<div class="search container-lg">
-						<input
-							type="search"
-							class="search-input"
-							placeholder="Rechercher une recette, un ingrédient, ..."
-							name="" />
-						<div class="search--cancel--container">
-							<input type="reset" value=" " alt="Clear the search form" class="search--cancel" />
-						</div>
-						<button href="#" class="search--icon">
-							<i class="fa fa-search"></i>
-						</button>
-					</div>
-				</form>
-			</div>
-		</header>
-		<!---------- END HEADER  ---------->
-		<!---------- FILTERS ---------->
-		<section class="filters">
-			<div class="dropdown dropdown__closed dropdown-ingredients">
-				<div class="dropdown--toggle">
-					<label for="dropdown--ingredients--check">Ingrédients</label>
-					<i class="fa-solid fa-chevron-up"></i>
-					<input type="checkbox" name="dropdown--ingredients--check" id="dropdown--ingredients--check" />
-				</div>
-				<form class="dropdown--search">
-					<input type="search" class="dropdown--search--input" />
-					<div class="dropdown--search--cancel--container">
-						<input type="reset" value=" " alt="Clear the search form" class="dropdown--search--cancel" />
-					</div>
-					<i class="fa fa-search"></i>
-				</form>
-				<div class="dropdown-ingredients--keywords keywords-list"></div>
-			</div>
-			<div class="dropdown dropdown__closed dropdown-appareils">
-				<div class="dropdown--toggle">
-					<label for="dropdown--appareils--check">Appareils</label>
-					<i class="fa-solid fa-chevron-up"></i>
-					<input type="checkbox" name="dropdown--appareils--check" id="dropdown--appareils--check" />
-				</div>
-				<form class="dropdown--search">
-					<input type="search" class="dropdown--search--input" />
-					<div class="dropdown--search--cancel--container">
-						<input type="reset" value=" " alt="Clear the search form" class="dropdown--search--cancel" />
-					</div>
-					<i class="fa fa-search"></i>
-				</form>
-				<div class="dropdown-appareils--keywords keywords-list"></div>
-			</div>
-			<div class="dropdown dropdown__closed dropdown-ustensiles">
-				<div class="dropdown--toggle">
-					<label for="dropdown--ustensiles--check">Ustensiles</label>
-					<i class="fa-solid fa-chevron-up"></i>
-					<input type="checkbox" name="dropdown--ustensiles--check" id="dropdown--ustensiles--check" />
-				</div>
-				<form class="dropdown--search">
-					<input type="search" class="dropdown--search--input" />
-					<div class="dropdown--search--cancel--container">
-						<input type="reset" value=" " alt="Clear the search form" class="dropdown--search--cancel" />
-					</div>
-					<i class="fa fa-search"></i>
-				</form>
-				<div class="dropdown-ustensiles--keywords keywords-list"></div>
-			</div>
-			<p class="total-recipes"><span class="total-recipes--number">50</span> recettes</p>
-		</section>
-		<!---------- END FILTERS ---------->
-		<!---------- ACTIVE FILTERS ---------->
-		<section class="active-labels"></section>
-		<!---------- END ACTIVE FILTERS ---------->
-		<!---------- RECIPE CARDS ---------->
-		<section class="recipes"></section>
-		<!---------- END RECIPE CARDS ---------->
-		<!------- Scripts ------->
-		<!-- templates -->
-		<script src="scripts/templates/recipeCard.js"></script>
-		<script src="scripts/templates/dropdownKeyword.js"></script>
-		<script src="scripts/templates/activeFilterLabel.js"></script>
-		<!-- utils -->
-		<script src="scripts/utils/keywords-arrays.js"></script>
-		<script src="scripts/utils/dropdowns.js"></script>
-		<script src="scripts/utils/dropdown-searchbars.js"></script>
-		<script src="scripts/utils/main-searchbar.js"></script>
-		<script src="scripts/utils/recipe-counter.js"></script>
-		<script src="scripts/utils/dropdown-keywords-input-filter.js"></script>
-		<script src="scripts/utils/filterLabels.js"></script>
-		<!-- pages -->
-		<script src="scripts/pages/index.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Les Petits Plats</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/icons/favicon.svg">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
 
-		<!-- Bootstrap -->
-		<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	</body>
+<body>
+  <!--######## HEADER ########-->
+  <header>
+    <div class="container-fluid">
+      <img src="assets/images/logo.png" alt="Les Petits Plats" class="navbar-logo">
+    </div>
+
+    <div class="container-sm">
+      <h1>
+        Cherchez parmi plus de 1500 recettes du quotidien, simples et
+        délicieuses
+      </h1>
+    </div>
+    <div class="container-fluid">
+      <form class="d-flex justify-content-center h-100">
+        <div class="search container-lg">
+          <input type="search" class="search-input" placeholder="Rechercher une recette, un ingrédient, ..."
+            title="Recherche">
+          <div class="search--cancel--container">
+            <input type="reset" value=" " title="Clear the search form" class="search--cancel">
+          </div>
+          <button class="search--icon">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </header>
+  <!--######## END HEADER  ########-->
+  <!--######## FILTERS ########-->
+  <section class="filters">
+    <div class="dropdown dropdown__closed dropdown-ingredients">
+      <div class="dropdown--toggle">
+        <label for="dropdown--ingredients--check">Ingrédients</label>
+        <i class="fa-solid fa-chevron-up"></i>
+        <input type="checkbox" name="dropdown--ingredients--check" id="dropdown--ingredients--check">
+      </div>
+      <form class="dropdown--search">
+        <input type="search" class="dropdown--search--input">
+        <div class="dropdown--search--cancel--container">
+          <input type="reset" value=" " title="Clear the search form" class="dropdown--search--cancel">
+        </div>
+        <i class="fa fa-search"></i>
+      </form>
+      <div class="dropdown-ingredients--keywords keywords-list"></div>
+    </div>
+    <div class="dropdown dropdown__closed dropdown-appareils">
+      <div class="dropdown--toggle">
+        <label for="dropdown--appareils--check">Appareils</label>
+        <i class="fa-solid fa-chevron-up"></i>
+        <input type="checkbox" name="dropdown--appareils--check" id="dropdown--appareils--check">
+      </div>
+      <form class="dropdown--search">
+        <input type="search" class="dropdown--search--input">
+        <div class="dropdown--search--cancel--container">
+          <input type="reset" value=" " title="Clear the search form" class="dropdown--search--cancel">
+        </div>
+        <i class="fa fa-search"></i>
+      </form>
+      <div class="dropdown-appareils--keywords keywords-list"></div>
+    </div>
+    <div class="dropdown dropdown__closed dropdown-ustensiles">
+      <div class="dropdown--toggle">
+        <label for="dropdown--ustensiles--check">Ustensiles</label>
+        <i class="fa-solid fa-chevron-up"></i>
+        <input type="checkbox" name="dropdown--ustensiles--check" id="dropdown--ustensiles--check">
+      </div>
+      <form class="dropdown--search">
+        <input type="search" class="dropdown--search--input">
+        <div class="dropdown--search--cancel--container">
+          <input type="reset" value=" " title="Clear the search form" class="dropdown--search--cancel">
+        </div>
+        <i class="fa fa-search"></i>
+      </form>
+      <div class="dropdown-ustensiles--keywords keywords-list"></div>
+    </div>
+    <p class="total-recipes">
+      <span class="total-recipes--number">50</span> recettes
+    </p>
+  </section>
+  <!--######## END FILTERS ########-->
+  <!--######## ACTIVE FILTERS ########-->
+  <section class="active-labels"></section>
+  <!--######## END ACTIVE FILTERS ########-->
+  <!--######## RECIPE CARDS ########-->
+  <section class="recipes"></section>
+  <!--######## END RECIPE CARDS ########-->
+  <!-- Scripts -->
+  <!-- templates -->
+  <script src="scripts/templates/recipeCard.js"></script>
+  <script src="scripts/templates/dropdownKeyword.js"></script>
+  <script src="scripts/templates/activeFilterLabel.js"></script>
+  <!-- utils -->
+  <script src="scripts/utils/keywords-arrays.js"></script>
+  <script src="scripts/utils/dropdowns.js"></script>
+  <script src="scripts/utils/dropdown-searchbars.js"></script>
+  <script src="scripts/utils/main-searchbar.js"></script>
+  <script src="scripts/utils/recipe-counter.js"></script>
+  <script src="scripts/utils/dropdown-keywords-input-filter.js"></script>
+  <script src="scripts/utils/filterLabels.js"></script>
+  <!-- pages -->
+  <script src="scripts/pages/index.js"></script>
+
+  <!-- Bootstrap -->
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
