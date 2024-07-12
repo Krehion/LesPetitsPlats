@@ -1,13 +1,13 @@
 function mainSearch(recipes) {
   // Get search input element
   const mainSearchInput = document.querySelector(".search-input");
+  const mainSearchButton = document.querySelector(".search--icon");
 
   // Add event listener
-  mainSearchInput.addEventListener("input", function () {
-    // sortir consignes de l'event listener, laisser dans la fonction
-    // 4 fonctions : 1 par dropdown + 1 mainsearch
-    const userInput = mainSearchInput.value.toLowerCase();
+  mainSearchButton.addEventListener("click", (event) => {
+    event.preventDefault();
 
+    const userInput = mainSearchInput.value.toLowerCase();
     const filteredRecipesSet = new Set();
 
     recipes.forEach((recipe) => {
@@ -33,7 +33,14 @@ function mainSearch(recipes) {
     // Check filteredRecipes content
     console.log(filteredRecipes);
 
-    return filteredRecipes;
+    // empty recipes section, keywords lists, recipes counter
+    emptyCards();
+    emptyCounter();
+    // display filtered list of recipes, filtered lists of keywords, new amount of recipes
+    displayRecipes(filteredRecipes);
+    // call functions getFilteredIngredients(filteredRecipes) + appareils + ustensiles (functions to be created)
+    // call displayDropdownKeywords with new data
+    recipeCounter();
   });
 }
 
@@ -48,3 +55,6 @@ function mainSearch(recipes) {
 // add error message to be displayed if filteredRecipes = 0
 // add a min character length of 3 to input
 // add a timer to allow a small intervall between characters typed before launching the function -> change input to submit to not trigger research on every input
+
+// sortir consignes de l'event listener, laisser dans la fonction
+// 4 fonctions : 1 par dropdown + 1 mainsearch
