@@ -50,6 +50,8 @@ async function init() {
 
   createLabel();
   deleteLabel();
+
+  mainSearch(recipes);
 }
 
 init();
