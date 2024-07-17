@@ -14,3 +14,9 @@ function emptyKeywordsLists() {
     keywordsList.innerHTML = "";
   });
 }
+
+function emptyAll() {
+  emptyCards();
+  emptyCounter();
+  emptyKeywordsLists();
+}
