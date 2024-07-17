@@ -334,6 +334,19 @@ header .search--icon:hover {
   margin: 0;
 }
 
+.empty-result-message {
+  display: none;
+  padding: 0px 70px;
+  text-align: center;
+}
+.empty-result-message--user-input {
+  font-weight: 700;
+}
+.empty-result-message--icon {
+  font-size: 6rem;
+  margin-bottom: 10px;
+}
+
 /*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors

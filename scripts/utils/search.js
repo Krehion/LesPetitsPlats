@@ -36,9 +36,7 @@ function mainSearch(
     const filteredRecipes = Array.from(filteredRecipesSet);
 
     // empty recipes section, keywords lists, recipes counter
-    emptyCards();
-    emptyKeywordsLists();
-    emptyCounter();
+    emptyAll();
     // Display filtered list of recipes, new amount of recipes, filtered lists of keywords
     displayRecipes(filteredRecipes);
     recipeCounter();
@@ -46,6 +44,9 @@ function mainSearch(
     const ingredientsFilteredKeywords = getFilteredIngredients(filteredRecipes);
     const appareilsFilteredKeywords = getFilteredAppareils(filteredRecipes);
     const ustensilesFilteredKeywords = getFilteredUstensiles(filteredRecipes);
+
+    // Display error message if filteredRecipes is empty
+    displayEmptyResultMessage(filteredRecipes);
 
     // Call displayDropdownKeywords with new data
     displayDropdownKeywords(
@@ -70,7 +71,6 @@ function mainSearch(
 }
 
 // Refinement:
-// add error message to be displayed if filteredRecipes = 0
 // add a min character length of 3 to input
 
 // sortir consignes de l'event listener, laisser dans la fonction

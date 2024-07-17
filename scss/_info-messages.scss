@@ -1,0 +1,14 @@
+.empty-result-message {
+  display: none;
+  padding: 0px 70px;
+  text-align: center;
+
+  &--user-input {
+    font-weight: 700;
+  }
+
+  &--icon {
+    font-size: 6rem;
+    margin-bottom: 10px;
+  }
+}
