@@ -1,4 +1,9 @@
-function mainSearch(recipes) {
+function mainSearch(
+  recipes,
+  ingredientsKeywordsSection,
+  appareilsKeywordsSection,
+  ustensilesKeywordsSection
+) {
   // Get search input element
   const mainSearchInput = document.querySelector(".search-input");
   const mainSearchButton = document.querySelector(".search--icon");
@@ -30,31 +35,43 @@ function mainSearch(recipes) {
 
     const filteredRecipes = Array.from(filteredRecipesSet);
 
-    // Check filteredRecipes content
-    console.log(filteredRecipes);
-
     // empty recipes section, keywords lists, recipes counter
     emptyCards();
+    emptyKeywordsLists();
     emptyCounter();
-    // display filtered list of recipes, filtered lists of keywords, new amount of recipes
+    // Display filtered list of recipes, new amount of recipes, filtered lists of keywords
     displayRecipes(filteredRecipes);
-    // call functions getFilteredIngredients(filteredRecipes) + appareils + ustensiles (functions to be created)
-    // call displayDropdownKeywords with new data
     recipeCounter();
+
+    const ingredientsFilteredKeywords = getFilteredIngredients(filteredRecipes);
+    const appareilsFilteredKeywords = getFilteredAppareils(filteredRecipes);
+    const ustensilesFilteredKeywords = getFilteredUstensiles(filteredRecipes);
+
+    // Call displayDropdownKeywords with new data
+    displayDropdownKeywords(
+      ingredientsFilteredKeywords,
+      ingredientsKeywordsSection
+    );
+    displayDropdownKeywords(
+      appareilsFilteredKeywords,
+      appareilsKeywordsSection
+    );
+    displayDropdownKeywords(
+      ustensilesFilteredKeywords,
+      ustensilesKeywordsSection
+    );
+
+    // Re-call keywords and label functions to make them work with the new data
+    keywordsInputFilter();
+    displayCancelSearchKeywords(); // ???
+    createLabel();
+    deleteLabel();
   });
 }
-
-// On search button click:
-// empty recipes section
-// call displayRecipes(filteredRecipes)
-// empty keywords and sections
-// call functions getFilteredIngredients(filteredRecipes) + appareils + ustensiles (functions to be created)
-// call displayDropdownKeywords with new data
 
 // Refinement:
 // add error message to be displayed if filteredRecipes = 0
 // add a min character length of 3 to input
-// add a timer to allow a small intervall between characters typed before launching the function -> change input to submit to not trigger research on every input
 
 // sortir consignes de l'event listener, laisser dans la fonction
 // 4 fonctions : 1 par dropdown + 1 mainsearch

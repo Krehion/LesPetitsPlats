@@ -7,3 +7,10 @@ function emptyCounter() {
   const counterContainer = document.querySelector(".total-recipes--number");
   counterContainer.innerHTML = "";
 }
+
+function emptyKeywordsLists() {
+  const keywordsLists = document.querySelectorAll(".keywords-list");
+  keywordsLists.forEach((keywordsList) => {
+    keywordsList.innerHTML = "";
+  });
+}
