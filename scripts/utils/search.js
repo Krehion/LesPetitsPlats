@@ -4,74 +4,80 @@ function mainSearch(
   appareilsKeywordsSection,
   ustensilesKeywordsSection
 ) {
-  // Get search input element
-  const mainSearchInput = document.querySelector(".search-input");
+  // Get search trigger element
   const mainSearchButton = document.querySelector(".search--icon");
 
   // Add event listener
   mainSearchButton.addEventListener("click", (event) => {
     event.preventDefault();
 
+    const mainSearchInput = document.querySelector(".search-input");
     const userInput = mainSearchInput.value.toLowerCase();
-    const filteredRecipesSet = new Set();
+    const errorMessage = document.querySelector(".search--error");
 
-    recipes.forEach((recipe) => {
-      const recipeTitle = recipe.name.toLowerCase();
-      const recipeDesc = recipe.description.toLowerCase();
+    if (userInput.length >= 3) {
+      errorMessage.style.display = "none";
+      const filteredRecipes = filterRecipes(recipes, userInput);
 
-      if (recipeTitle.includes(userInput) || recipeDesc.includes(userInput)) {
-        // Add recipe to filteredRecipesSet
-        filteredRecipesSet.add(recipe);
-      }
+      // Empty recipes section, keywords lists, recipes counter
+      emptyAll();
+      // Display filtered list of recipes, new amount of recipes, filtered lists of keywords
+      displayRecipes(filteredRecipes);
+      recipeCounter();
 
-      recipe.ingredients.forEach((item) => {
-        const ingredient = item.ingredient.toLowerCase();
-        if (ingredient.includes(userInput)) {
-          // Add recipe to filteredRecipesSet
-          filteredRecipesSet.add(recipe);
-        }
-      });
-    });
+      const ingredientsFilteredKeywords =
+        getFilteredIngredients(filteredRecipes);
+      const appareilsFilteredKeywords = getFilteredAppareils(filteredRecipes);
+      const ustensilesFilteredKeywords = getFilteredUstensiles(filteredRecipes);
 
-    const filteredRecipes = Array.from(filteredRecipesSet);
+      // Display error message if filteredRecipes is empty
+      displayEmptyResultMessage(filteredRecipes);
 
-    // empty recipes section, keywords lists, recipes counter
-    emptyAll();
-    // Display filtered list of recipes, new amount of recipes, filtered lists of keywords
-    displayRecipes(filteredRecipes);
-    recipeCounter();
+      // Call displayDropdownKeywords with new data
+      displayDropdownKeywords(
+        ingredientsFilteredKeywords,
+        ingredientsKeywordsSection
+      );
+      displayDropdownKeywords(
+        appareilsFilteredKeywords,
+        appareilsKeywordsSection
+      );
+      displayDropdownKeywords(
+        ustensilesFilteredKeywords,
+        ustensilesKeywordsSection
+      );
 
-    const ingredientsFilteredKeywords = getFilteredIngredients(filteredRecipes);
-    const appareilsFilteredKeywords = getFilteredAppareils(filteredRecipes);
-    const ustensilesFilteredKeywords = getFilteredUstensiles(filteredRecipes);
-
-    // Display error message if filteredRecipes is empty
-    displayEmptyResultMessage(filteredRecipes);
-
-    // Call displayDropdownKeywords with new data
-    displayDropdownKeywords(
-      ingredientsFilteredKeywords,
-      ingredientsKeywordsSection
-    );
-    displayDropdownKeywords(
-      appareilsFilteredKeywords,
-      appareilsKeywordsSection
-    );
-    displayDropdownKeywords(
-      ustensilesFilteredKeywords,
-      ustensilesKeywordsSection
-    );
-
-    // Re-call keywords and label functions to make them work with the new data
-    keywordsInputFilter();
-    displayCancelSearchKeywords(); // ???
-    createLabel();
-    deleteLabel();
+      // Re-call keywords and label functions to make them work with the new data
+      keywordsInputFilter();
+      createLabel();
+      deleteLabel();
+    } else {
+      // display error message "Veuillez entrer au minimum 3 caractères"
+      errorMessage.style.display = "block";
+    }
   });
 }
 
-// Refinement:
-// add a min character length of 3 to input
+function filterRecipes(recipes, userInput) {
+  const filteredRecipesSet = new Set();
 
-// sortir consignes de l'event listener, laisser dans la fonction
-// 4 fonctions : 1 par dropdown + 1 mainsearch
+  recipes.forEach((recipe) => {
+    const recipeTitle = recipe.name.toLowerCase();
+    const recipeDesc = recipe.description.toLowerCase();
+
+    if (recipeTitle.includes(userInput) || recipeDesc.includes(userInput)) {
+      // Add recipe to filteredRecipesSet
+      filteredRecipesSet.add(recipe);
+    }
+
+    recipe.ingredients.forEach((item) => {
+      const ingredient = item.ingredient.toLowerCase();
+      if (ingredient.includes(userInput)) {
+        // Add recipe to filteredRecipesSet
+        filteredRecipesSet.add(recipe);
+      }
+    });
+  });
+
+  return Array.from(filteredRecipesSet);
+}

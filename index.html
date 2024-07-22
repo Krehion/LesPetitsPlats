@@ -29,7 +29,7 @@
       </h1>
     </div>
     <div class="container-fluid">
-      <form class="d-flex justify-content-center h-100">
+      <form class="d-flex justify-content-center h-100 search--form">
         <div class="search container-lg">
           <input type="search" class="search-input" placeholder="Rechercher une recette, un ingrédient, ..."
             title="Recherche">
@@ -40,6 +40,7 @@
             <i class="fa fa-search"></i>
           </button>
         </div>
+        <div class="container-lg search--error">Veuillez entrer au minimum 3 caractères</div>
       </form>
     </div>
   </header>
@@ -102,8 +103,7 @@
   <!--######## RECIPE CARDS ########-->
   <div class="empty-result-message"><i class="fa-regular fa-face-frown empty-result-message--icon"></i>
     <p>Nous sommes désolés, aucune recette ne contient «&nbsp;<span
-        class="empty-result-message--user-input">exemple</span>&nbsp;». Vous
-      pouvez chercher «&nbsp;tarte aux
+        class="empty-result-message--user-input">exemple</span>&nbsp;». Vous pouvez chercher «&nbsp;tarte aux
       pommes&nbsp;», «&nbsp;poisson&nbsp;», etc...</p>
   </div>
   <section class="recipes"></section>

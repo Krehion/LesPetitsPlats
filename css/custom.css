@@ -77,6 +77,15 @@ header .search--cancel--container::before {
   left: 0;
   pointer-events: none;
 }
+header .search--form {
+  flex-direction: column;
+}
+header .search--error {
+  color: red;
+  font-size: small;
+  padding-top: 5px;
+  display: none;
+}
 header .search--icon {
   background-color: #000000;
   border: none;
