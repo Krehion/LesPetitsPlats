@@ -1,160 +1,161 @@
 .filters {
-	padding: 25px 70px;
-	display: flex;
-	flex-direction: row;
-	gap: 40px;
-	max-height: 101.2px;
-	position: relative;
-	z-index: 200;
+  padding: 25px 70px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  max-height: 101.2px;
+  position: relative;
+  z-index: 200;
 
-	.dropdown {
-		background: #fff;
-		border-radius: 11px;
-		overflow: hidden;
-		width: 210px;
+  .dropdown {
+    background: #fff;
+    border-radius: 11px;
+    overflow: hidden;
+    width: 210px;
 
-		&:hover * {
-			cursor: pointer;
-		}
+    &:hover * {
+      cursor: pointer;
+    }
 
-		&__open {
-			height: fit-content;
-		}
+    &__open {
+      height: fit-content;
+    }
 
-		&__closed {
-			height: 50px;
-			overflow: hidden;
+    &__closed {
+      height: 50px;
+      overflow: hidden;
 
-			.fa-chevron-up {
-				transform: rotate(180deg);
-			}
-		}
+      .fa-chevron-up {
+        transform: rotate(180deg);
+      }
+    }
 
-		&--toggle {
-			width: 100%;
-			min-width: 180px;
-			height: 50px;
-			padding: 0 15px;
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: space-between;
+    &--toggle {
+      width: 100%;
+      min-width: 180px;
+      height: 50px;
+      padding: 0 15px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
 
-			input {
-				opacity: 0;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 50px;
-			}
-		}
-		&--search {
-			padding: 5px 10px;
-			margin: 0 15px 15px 15px;
-			color: $gray;
-			border: 1px solid $gray-light;
-			border-radius: 3px;
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: space-between;
-			font-size: 0.9rem;
+      input {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+      }
+    }
+    &--search {
+      padding: 5px 10px;
+      margin: 0 15px 15px 15px;
+      color: $gray;
+      border: 1px solid $gray-light;
+      border-radius: 3px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
 
-			input[type="search"] {
-				border: none;
-				flex: auto;
-				width: 50px;
-				color: $gray;
-			}
+      input[type="search"] {
+        border: none;
+        flex: auto;
+        width: 50px;
+        color: $gray;
+      }
 
-			&--cancel {
-				background-color: transparent;
-				border: none;
-				color: $gray;
-				width: 16px;
-				height: 23.6px;
-				margin-right: 10px;
+      &--cancel {
+        background-color: transparent;
+        border: none;
+        color: $gray;
+        width: 16px;
+        height: 23.6px;
+        margin-right: 10px;
 
-				&--container {
-					position: relative;
-					display: none;
+        &--container {
+          position: relative;
+          display: none;
 
-					&::before {
-						content: "";
-						display: block;
-						background: url(../assets/icons/cancel.svg) no-repeat center;
-						background-size: 11px;
-						width: 16px;
-						height: 23.6px;
-						position: absolute;
-						top: 0;
-						left: 0;
-						pointer-events: none; // makes the pseudo-element unclickable
-					}
-				}
-			}
-		}
+          &::before {
+            content: "";
+            display: block;
+            background: url(../assets/icons/cancel.svg) no-repeat center;
+            background-size: 11px;
+            width: 16px;
+            height: 23.6px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none; // makes the pseudo-element unclickable
+          }
+        }
+      }
+    }
 
-		.dropdown-ingredients--keywords,
-		.dropdown-appareils--keywords,
-		.dropdown-ustensiles--keywords {
-			display: flex;
-			flex-direction: column;
-			max-height: 200px;
-			box-sizing: border-box;
-			overflow-y: scroll;
+    .dropdown-ingredients--keywords,
+    .dropdown-appareils--keywords,
+    .dropdown-ustensiles--keywords,
+    .dropdown--keywords {
+      display: flex;
+      flex-direction: column;
+      max-height: 200px;
+      box-sizing: border-box;
+      overflow-y: scroll;
 
-			&--container {
-				width: 193.45px;
-				box-sizing: border-box;
-				border: none;
-				background-color: #fff;
-				text-align: left;
-				padding: 5px 15px;
-				order: 2;
+      &--container {
+        width: 193.45px;
+        box-sizing: border-box;
+        border: none;
+        background-color: #fff;
+        text-align: left;
+        padding: 5px 15px;
+        order: 2;
 
-				.fa-circle-xmark {
-					visibility: hidden;
-				}
+        .fa-circle-xmark {
+          visibility: hidden;
+        }
 
-				&:hover {
-					background-color: #ffd15b;
-				}
+        &:hover {
+          background-color: #ffd15b;
+        }
 
-				&__selected {
-					width: 193.45px;
-					box-sizing: border-box;
-					border: none;
-					background-color: #ffd15b;
-					text-align: left;
-					padding: 5px 15px;
-					order: 1;
-					display: flex;
-					flex-direction: row;
-					justify-content: space-between;
-					align-items: center;
+        &__selected {
+          width: 193.45px;
+          box-sizing: border-box;
+          border: none;
+          background-color: #ffd15b;
+          text-align: left;
+          padding: 5px 15px;
+          order: 1;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
 
-					.fa-circle-xmark {
-						visibility: hidden;
-					}
+          .fa-circle-xmark {
+            visibility: hidden;
+          }
 
-					&:hover {
-						font-weight: 700;
+          &:hover {
+            font-weight: 700;
 
-						.fa-circle-xmark {
-							visibility: visible;
-						}
-					}
-				}
-			}
-		}
-	}
+            .fa-circle-xmark {
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
 
-	.total-recipes {
-		font-family: "Anton", sans-serif;
-		font-size: 1.3rem;
-		margin: 0 0 0 auto;
-		padding: 10px 0;
-	}
+  .total-recipes {
+    font-family: "Anton", sans-serif;
+    font-size: 1.3rem;
+    margin: 0 0 0 auto;
+    padding: 10px 0;
+  }
 }

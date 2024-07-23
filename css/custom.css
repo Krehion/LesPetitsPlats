@@ -194,7 +194,8 @@ header .search--icon:hover {
 }
 .filters .dropdown .dropdown-ingredients--keywords,
 .filters .dropdown .dropdown-appareils--keywords,
-.filters .dropdown .dropdown-ustensiles--keywords {
+.filters .dropdown .dropdown-ustensiles--keywords,
+.filters .dropdown .dropdown--keywords {
   display: flex;
   flex-direction: column;
   max-height: 200px;
@@ -203,7 +204,8 @@ header .search--icon:hover {
 }
 .filters .dropdown .dropdown-ingredients--keywords--container,
 .filters .dropdown .dropdown-appareils--keywords--container,
-.filters .dropdown .dropdown-ustensiles--keywords--container {
+.filters .dropdown .dropdown-ustensiles--keywords--container,
+.filters .dropdown .dropdown--keywords--container {
   width: 193.45px;
   box-sizing: border-box;
   border: none;
@@ -214,17 +216,20 @@ header .search--icon:hover {
 }
 .filters .dropdown .dropdown-ingredients--keywords--container .fa-circle-xmark,
 .filters .dropdown .dropdown-appareils--keywords--container .fa-circle-xmark,
-.filters .dropdown .dropdown-ustensiles--keywords--container .fa-circle-xmark {
+.filters .dropdown .dropdown-ustensiles--keywords--container .fa-circle-xmark,
+.filters .dropdown .dropdown--keywords--container .fa-circle-xmark {
   visibility: hidden;
 }
 .filters .dropdown .dropdown-ingredients--keywords--container:hover,
 .filters .dropdown .dropdown-appareils--keywords--container:hover,
-.filters .dropdown .dropdown-ustensiles--keywords--container:hover {
+.filters .dropdown .dropdown-ustensiles--keywords--container:hover,
+.filters .dropdown .dropdown--keywords--container:hover {
   background-color: #ffd15b;
 }
 .filters .dropdown .dropdown-ingredients--keywords--container__selected,
 .filters .dropdown .dropdown-appareils--keywords--container__selected,
-.filters .dropdown .dropdown-ustensiles--keywords--container__selected {
+.filters .dropdown .dropdown-ustensiles--keywords--container__selected,
+.filters .dropdown .dropdown--keywords--container__selected {
   width: 193.45px;
   box-sizing: border-box;
   border: none;
@@ -239,17 +244,20 @@ header .search--icon:hover {
 }
 .filters .dropdown .dropdown-ingredients--keywords--container__selected .fa-circle-xmark,
 .filters .dropdown .dropdown-appareils--keywords--container__selected .fa-circle-xmark,
-.filters .dropdown .dropdown-ustensiles--keywords--container__selected .fa-circle-xmark {
+.filters .dropdown .dropdown-ustensiles--keywords--container__selected .fa-circle-xmark,
+.filters .dropdown .dropdown--keywords--container__selected .fa-circle-xmark {
   visibility: hidden;
 }
 .filters .dropdown .dropdown-ingredients--keywords--container__selected:hover,
 .filters .dropdown .dropdown-appareils--keywords--container__selected:hover,
-.filters .dropdown .dropdown-ustensiles--keywords--container__selected:hover {
+.filters .dropdown .dropdown-ustensiles--keywords--container__selected:hover,
+.filters .dropdown .dropdown--keywords--container__selected:hover {
   font-weight: 700;
 }
 .filters .dropdown .dropdown-ingredients--keywords--container__selected:hover .fa-circle-xmark,
 .filters .dropdown .dropdown-appareils--keywords--container__selected:hover .fa-circle-xmark,
-.filters .dropdown .dropdown-ustensiles--keywords--container__selected:hover .fa-circle-xmark {
+.filters .dropdown .dropdown-ustensiles--keywords--container__selected:hover .fa-circle-xmark,
+.filters .dropdown .dropdown--keywords--container__selected:hover .fa-circle-xmark {
   visibility: visible;
 }
 .filters .total-recipes {
