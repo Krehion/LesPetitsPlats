@@ -51,6 +51,8 @@ function mainSearch(
       keywordsInputFilter();
       createLabel();
       deleteLabel();
+
+      labelsSearch(filteredRecipes);
     } else {
       // display error message "Veuillez entrer au minimum 3 caractères"
       errorMessage.style.display = "block";
@@ -81,3 +83,7 @@ function filterRecipes(recipes, userInput) {
 
   return Array.from(filteredRecipesSet);
 }
+
+// TO DO :
+// 1 function per advanced research (ingrédients, appareils, ustensiles)
+// Refactoring

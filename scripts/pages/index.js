@@ -51,6 +51,8 @@ async function init() {
   createLabel();
   deleteLabel();
 
+  labelsSearch(recipes);
+
   mainSearch(
     recipes,
     ingredientsKeywordsSection,
