@@ -49,10 +49,7 @@ function mainSearch(
 
       // Re-call keywords and label functions to make them work with the new data
       keywordsInputFilter();
-      createLabel();
-      deleteLabel();
-
-      labelsSearch(filteredRecipes);
+      manageLabels();
     } else {
       // display error message "Veuillez entrer au minimum 3 caractères"
       errorMessage.style.display = "block";
@@ -84,6 +81,43 @@ function filterRecipes(recipes, userInput) {
   return Array.from(filteredRecipesSet);
 }
 
-// TO DO :
-// 1 function per advanced research (ingrédients, appareils, ustensiles)
-// Refactoring
+function filterIngredients() {
+  // Get selected labels
+  const selectedIngredientsDOM = Array.from(
+    document.querySelectorAll(
+      ".dropdown-ingredients--keywords .dropdown--keywords--container__selected"
+    )
+  );
+  let selectedIngredients = [];
+  // Convert DOM elements to string arrays (makes them usable to filter the recipes later)
+  selectedIngredients = selectedIngredientsDOM.map(
+    (selectedIngredient) => selectedIngredient.innerText
+  );
+  return selectedIngredients;
+}
+
+function filterAppareils() {
+  const selectedAppareilsDOM = Array.from(
+    document.querySelectorAll(
+      ".dropdown-appareils--keywords .dropdown--keywords--container__selected"
+    )
+  );
+  let selectedAppareils = [];
+  selectedAppareils = selectedAppareilsDOM.map(
+    (selectedAppareil) => selectedAppareil.innerText
+  );
+  return selectedAppareils;
+}
+
+function filterUstensiles() {
+  const selectedUstensilesDOM = Array.from(
+    document.querySelectorAll(
+      ".dropdown-ustensiles--keywords .dropdown--keywords--container__selected"
+    )
+  );
+  let selectedUstensiles = [];
+  selectedUstensiles = selectedUstensilesDOM.map(
+    (selectedUstensile) => selectedUstensile.innerText
+  );
+  return selectedUstensiles;
+}

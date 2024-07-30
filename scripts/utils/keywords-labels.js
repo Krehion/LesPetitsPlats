@@ -5,6 +5,7 @@ function createLabel() {
   const filterButtons = document.querySelectorAll(
     ".dropdown--keywords--container"
   );
+  console.log("filterButtons:", filterButtons);
 
   // Add click event listener to each keyword
   filterButtons.forEach((button) => {
@@ -78,4 +79,9 @@ function deleteLabel() {
       button.classList.add("dropdown-ingredients--keywords--container");
     });
   });
+}
+
+function manageLabels() {
+  createLabel();
+  deleteLabel();
 }

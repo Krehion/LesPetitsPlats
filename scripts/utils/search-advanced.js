@@ -15,43 +15,12 @@ function labelsSearch(recipesToFilter, recipesToDisplay) {
   });
 }
 
+
+
 function labelsFiltering(recipesToFilter) {
   // when clicking on an ingredient, ustensil or appliance, search for it in each recipe currently displayed.
 
-  // Get selected labels
-  const selectedIngredientsDOM = Array.from(
-    document.querySelectorAll(
-      ".dropdown-ingredients--keywords .dropdown--keywords--container__selected"
-    )
-  );
-
-  const selectedAppliancesDOM = Array.from(
-    document.querySelectorAll(
-      ".dropdown-appareils--keywords .dropdown--keywords--container__selected"
-    )
-  );
-
-  const selectedUstensilsDOM = Array.from(
-    document.querySelectorAll(
-      ".dropdown-appareils--keywords .dropdown--keywords--container__selected"
-    )
-  );
-
   let recipesToDisplay = [];
-  let selectedIngredients = [];
-  let selectedAppliances = [];
-  let selectedUstensils = [];
-
-  // Convert DOM elements to string arrays (makes them usable to filter the recipes later)
-  selectedIngredients = selectedIngredientsDOM.map(
-    (selectedIngredient) => selectedIngredient.innerText
-  );
-  selectedAppliances = selectedAppliancesDOM.map(
-    (selectedAppliance) => selectedAppliance.innerText
-  );
-  selectedUstensils = selectedUstensilsDOM.map(
-    (selectedUstensil) => selectedUstensil.innerText
-  );
 
   // Define recipesToDisplay
   recipesToDisplay = recipesToFilter.filter((recipe) => {

@@ -23,42 +23,18 @@ async function displayRecipes(recipes) {
 async function init() {
   // fetch recipes' data
   const recipes = await getRecipes(); // Get the recipes array
-  // access the recipes array
+  // display dynamic elements
+  displayCancelSearchMain();
   displayRecipes(recipes);
   recipeCounter();
+  await displayDropdownIngredients(recipes);
+  await displayDropdownUstensiles(recipes);
+  await displayDropdownAppareils(recipes);
 
-  // fetch keywords arrays
-  const ingredientsKeywords = await getIngredients(recipes);
-  const ingredientsKeywordsSection = document.querySelector(
-    ".dropdown-ingredients--keywords"
-  );
-  const ustensilesKeywords = await getUstensiles(recipes);
-  const ustensilesKeywordsSection = document.querySelector(
-    ".dropdown-ustensiles--keywords"
-  );
-  const appareilsKeywords = await getAppareils(recipes);
-  const appareilsKeywordsSection = document.querySelector(
-    ".dropdown-appareils--keywords"
-  );
-
-  displayDropdownKeywords(ingredientsKeywords, ingredientsKeywordsSection);
-  displayDropdownKeywords(ustensilesKeywords, ustensilesKeywordsSection);
-  displayDropdownKeywords(appareilsKeywords, appareilsKeywordsSection);
-  unfoldDropdown();
-  keywordsInputFilter();
-  displayCancelSearchKeywords();
-
-  createLabel();
-  deleteLabel();
-
-  labelsSearch(recipes);
-
-  mainSearch(
-    recipes,
-    ingredientsKeywordsSection,
-    appareilsKeywordsSection,
-    ustensilesKeywordsSection
-  );
+  // handle dropdowns' behaviour
+  initDropdowns();
+  manageLabels(); // Call manageLabels after triggering elements are initialized
+  mainSearch(recipes);
 }
 
 init();
