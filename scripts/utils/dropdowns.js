@@ -73,7 +73,7 @@ async function displayDropdownIngredients(recipes) {
 }
 
 async function displayDropdownUstensiles(recipes) {
-  const ustensilesKeywords = await getIngredients(recipes);
+  const ustensilesKeywords = await getUstensiles(recipes);
   const ustensilesKeywordsSection = document.querySelector(
     ".dropdown-ustensiles--keywords"
   );
