@@ -55,13 +55,31 @@ function ingredientSearch(recipes, ingredientText) {
   return ingredientFilteredRecipes;
 }
 
-function search(recipes) {
-  console.log("Search called with recipes:", recipes); // Log the recipes in search function
+function ustensilSearch(recipes, ustensilText) {
+  const filteredRecipesSet = new Set();
 
+  recipes.forEach((recipe) => {
+    recipe.ustensils.forEach((item) => {
+      const ustensil = item.toLowerCase();
+      if (ustensil.includes(ustensilText.toLowerCase())) {
+        // Add recipe to filteredRecipesSet
+        filteredRecipesSet.add(recipe);
+      }
+    });
+  });
+
+  const ustensilFilteredRecipes = Array.from(filteredRecipesSet);
+  return ustensilFilteredRecipes;
+}
+
+function search(recipes) {
   // Get search trigger elements
   const mainSearchButton = document.querySelector(".search--icon");
   const ingredientSearchButtons = document.querySelectorAll(
     ".dropdown-ingredients--keywords .dropdown--keywords--container"
+  );
+  const ustensilSearchButtons = document.querySelectorAll(
+    ".dropdown-ustensiles--keywords .dropdown--keywords--container"
   );
 
   // Add event listeners
@@ -76,6 +94,15 @@ function search(recipes) {
       event.preventDefault();
       const ingredientText = event.target.textContent.trim().toLowerCase();
       const newRecipes = ingredientSearch(recipes, ingredientText);
+      run(newRecipes);
+    });
+  });
+
+  ustensilSearchButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const ustensilText = event.target.textContent.trim().toLowerCase();
+      const newRecipes = ustensilSearch(recipes, ustensilText);
       run(newRecipes);
     });
   });
