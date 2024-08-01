@@ -134,3 +134,7 @@ function search(recipes) {
     });
   });
 }
+
+// TO DO :
+// removing a label refreshes the list of filters and the display depending on it
+// fix appearance of selected filters in dropdown lists : they should have the class "dropdown--keywords--container__selected"
