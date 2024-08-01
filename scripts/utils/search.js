@@ -72,6 +72,21 @@ function ustensilSearch(recipes, ustensilText) {
   return ustensilFilteredRecipes;
 }
 
+function applianceSearch(recipes, applianceText) {
+  const filteredRecipesSet = new Set();
+
+  recipes.forEach((recipe) => {
+    const appliance = recipe.appliance.toLowerCase();
+    if (appliance.includes(applianceText.toLowerCase())) {
+      // Add recipe to filteredRecipesSet
+      filteredRecipesSet.add(recipe);
+    }
+  });
+
+  const applianceFilteredRecipes = Array.from(filteredRecipesSet);
+  return applianceFilteredRecipes;
+}
+
 function search(recipes) {
   // Get search trigger elements
   const mainSearchButton = document.querySelector(".search--icon");
@@ -80,6 +95,9 @@ function search(recipes) {
   );
   const ustensilSearchButtons = document.querySelectorAll(
     ".dropdown-ustensiles--keywords .dropdown--keywords--container"
+  );
+  const applianceSearchButtons = document.querySelectorAll(
+    ".dropdown-appareils--keywords .dropdown--keywords--container"
   );
 
   // Add event listeners
@@ -103,6 +121,15 @@ function search(recipes) {
       event.preventDefault();
       const ustensilText = event.target.textContent.trim().toLowerCase();
       const newRecipes = ustensilSearch(recipes, ustensilText);
+      run(newRecipes);
+    });
+  });
+
+  applianceSearchButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const applianceText = event.target.textContent.trim().toLowerCase();
+      const newRecipes = applianceSearch(recipes, applianceText);
       run(newRecipes);
     });
   });
