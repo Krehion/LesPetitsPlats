@@ -1,60 +1,17 @@
-function mainSearch(
-  recipes,
-  ingredientsKeywordsSection,
-  appareilsKeywordsSection,
-  ustensilesKeywordsSection
-) {
-  // Get search trigger element
-  const mainSearchButton = document.querySelector(".search--icon");
+function mainSearch(recipes) {
+  const mainSearchInput = document.querySelector(".search-input");
+  const userInput = mainSearchInput.value.toLowerCase();
+  const errorMessage = document.querySelector(".search--error");
 
-  // Add event listener
-  mainSearchButton.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    const mainSearchInput = document.querySelector(".search-input");
-    const userInput = mainSearchInput.value.toLowerCase();
-    const errorMessage = document.querySelector(".search--error");
-
-    if (userInput.length >= 3) {
-      errorMessage.style.display = "none";
-      const filteredRecipes = filterRecipes(recipes, userInput);
-
-      // Empty recipes section, keywords lists, recipes counter
-      emptyAll();
-      // Display filtered list of recipes, new amount of recipes, filtered lists of keywords
-      displayRecipes(filteredRecipes);
-      recipeCounter();
-
-      const ingredientsFilteredKeywords =
-        getFilteredIngredients(filteredRecipes);
-      const appareilsFilteredKeywords = getFilteredAppareils(filteredRecipes);
-      const ustensilesFilteredKeywords = getFilteredUstensiles(filteredRecipes);
-
-      // Display error message if filteredRecipes is empty
-      displayEmptyResultMessage(filteredRecipes);
-
-      // Call displayDropdownKeywords with new data
-      displayDropdownKeywords(
-        ingredientsFilteredKeywords,
-        ingredientsKeywordsSection
-      );
-      displayDropdownKeywords(
-        appareilsFilteredKeywords,
-        appareilsKeywordsSection
-      );
-      displayDropdownKeywords(
-        ustensilesFilteredKeywords,
-        ustensilesKeywordsSection
-      );
-
-      // Re-call keywords and label functions to make them work with the new data
-      keywordsInputFilter();
-      manageLabels();
-    } else {
-      // display error message "Veuillez entrer au minimum 3 caractères"
-      errorMessage.style.display = "block";
-    }
-  });
+  if (userInput.length >= 3) {
+    errorMessage.style.display = "none";
+    const filteredRecipes = filterRecipes(recipes, userInput);
+    return filteredRecipes; // Return the filtered recipes
+  } else {
+    // display error message "Veuillez entrer au minimum 3 caractères"
+    errorMessage.style.display = "block";
+    return recipes; // Return the original recipes if the input is less than 3 characters
+  }
 }
 
 function filterRecipes(recipes, userInput) {
@@ -81,43 +38,45 @@ function filterRecipes(recipes, userInput) {
   return Array.from(filteredRecipesSet);
 }
 
-function filterIngredients() {
-  // Get selected labels
-  const selectedIngredientsDOM = Array.from(
-    document.querySelectorAll(
-      ".dropdown-ingredients--keywords .dropdown--keywords--container__selected"
-    )
-  );
-  let selectedIngredients = [];
-  // Convert DOM elements to string arrays (makes them usable to filter the recipes later)
-  selectedIngredients = selectedIngredientsDOM.map(
-    (selectedIngredient) => selectedIngredient.innerText
-  );
-  return selectedIngredients;
+function ingredientSearch(recipes, ingredientText) {
+  const filteredRecipesSet = new Set();
+
+  recipes.forEach((recipe) => {
+    recipe.ingredients.forEach((item) => {
+      const ingredient = item.ingredient.toLowerCase();
+      if (ingredient.includes(ingredientText.toLowerCase())) {
+        // Add recipe to filteredRecipesSet
+        filteredRecipesSet.add(recipe);
+      }
+    });
+  });
+
+  const ingredientFilteredRecipes = Array.from(filteredRecipesSet);
+  return ingredientFilteredRecipes;
 }
 
-function filterAppareils() {
-  const selectedAppareilsDOM = Array.from(
-    document.querySelectorAll(
-      ".dropdown-appareils--keywords .dropdown--keywords--container__selected"
-    )
-  );
-  let selectedAppareils = [];
-  selectedAppareils = selectedAppareilsDOM.map(
-    (selectedAppareil) => selectedAppareil.innerText
-  );
-  return selectedAppareils;
-}
+function search(recipes) {
+  console.log("Search called with recipes:", recipes); // Log the recipes in search function
 
-function filterUstensiles() {
-  const selectedUstensilesDOM = Array.from(
-    document.querySelectorAll(
-      ".dropdown-ustensiles--keywords .dropdown--keywords--container__selected"
-    )
+  // Get search trigger elements
+  const mainSearchButton = document.querySelector(".search--icon");
+  const ingredientSearchButtons = document.querySelectorAll(
+    ".dropdown-ingredients--keywords .dropdown--keywords--container"
   );
-  let selectedUstensiles = [];
-  selectedUstensiles = selectedUstensilesDOM.map(
-    (selectedUstensile) => selectedUstensile.innerText
-  );
-  return selectedUstensiles;
+
+  // Add event listeners
+  mainSearchButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    const newRecipes = mainSearch(recipes); // Get newRecipes from mainSearch
+    run(newRecipes); // Pass newRecipes to run
+  });
+
+  ingredientSearchButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const ingredientText = event.target.textContent.trim().toLowerCase();
+      const newRecipes = ingredientSearch(recipes, ingredientText);
+      run(newRecipes);
+    });
+  });
 }

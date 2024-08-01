@@ -1,7 +1,6 @@
 async function getRecipes() {
   const response = await fetch("../../data/recipes.js");
   if (!response.ok) {
-    console.log("Failed to fetch recipes data");
     return [];
   }
   const scriptText = await response.text(); // Get the script content as text
@@ -20,21 +19,34 @@ async function displayRecipes(recipes) {
   });
 }
 
-async function init() {
-  // fetch recipes' data
-  const recipes = await getRecipes(); // Get the recipes array
-  // display dynamic elements
-  displayCancelSearchMain();
-  displayRecipes(recipes);
+async function run(recipes) {
+  // Empty recipes section, keywords lists, recipes counter
+  emptyAll();
+  // Display dynamic elements
+  await displayRecipes(recipes);
   recipeCounter();
   await displayDropdownIngredients(recipes);
   await displayDropdownUstensiles(recipes);
   await displayDropdownAppareils(recipes);
-
-  // handle dropdowns' behaviour
+  // Handle dropdowns' behaviour
   initDropdowns();
-  manageLabels(); // Call manageLabels after triggering elements are initialized
-  mainSearch(recipes);
+  // Call manageLabels now that triggering elements are initialized
+  manageLabels();
+  // Display error message if recipes is empty
+  displayEmptyResultMessage(recipes);
+  // Call search function
+  search(recipes);
+}
+
+async function init() {
+  // Fetch recipes' data
+  const recipes = await getRecipes();
+
+  // Display global dynamic items
+  displayCancelSearchMain();
+
+  // Display dynamic content depending on the recipes
+  run(recipes);
 }
 
 init();
