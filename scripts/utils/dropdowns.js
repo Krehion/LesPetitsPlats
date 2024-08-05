@@ -53,41 +53,76 @@ function unfoldDropdown() {
   });
 }
 
-function displayDropdownKeywords(itemKeywords, itemKeywordsSection) {
+function displayDropdownKeywords(
+  itemKeywords,
+  itemKeywordsSelected,
+  itemKeywordsSection
+) {
+  console.log("Displaying keywords for section:", itemKeywordsSection);
+  console.log("Selected keywords:", itemKeywordsSelected);
+
+  itemKeywordsSection.innerHTML = ""; // Clear existing content
+
   itemKeywords.forEach((item) => {
-    const keywordModel = dropdownKeywordTemplate(item);
-    const keywordDOM = keywordModel.getKeywordDOM();
-    itemKeywordsSection.appendChild(keywordDOM);
+    const normalizedItem = item.toLowerCase(); // Normalize the keyword to lowercase
+    if (itemKeywordsSelected.includes(normalizedItem)) {
+      const keywordModel = dropdownKeywordSelectedTemplate(item);
+      const keywordDOM = keywordModel.getKeywordSelectedDOM();
+      itemKeywordsSection.appendChild(keywordDOM);
+      console.log("Added selected keyword:", item);
+    } else {
+      const keywordModel = dropdownKeywordTemplate(item);
+      const keywordDOM = keywordModel.getKeywordDOM();
+      itemKeywordsSection.appendChild(keywordDOM);
+      console.log("Added unselected keyword:", item);
+    }
   });
 }
 
-async function displayDropdownIngredients(recipes) {
+async function displayDropdownIngredients(
+  recipes,
+  ingredientsKeywordsSelected
+) {
   // fetch keywords array
   const ingredientsKeywords = await getIngredients(recipes);
+
   // find container element
   const ingredientsKeywordsSection = document.querySelector(
     ".dropdown-ingredients--keywords"
   );
 
-  displayDropdownKeywords(ingredientsKeywords, ingredientsKeywordsSection);
+  console.log("Displaying dropdown ingredients");
+  displayDropdownKeywords(
+    ingredientsKeywords,
+    ingredientsKeywordsSelected,
+    ingredientsKeywordsSection
+  );
 }
 
-async function displayDropdownUstensiles(recipes) {
+async function displayDropdownUstensiles(recipes, ustensilesKeywordsSelected) {
   const ustensilesKeywords = await getUstensiles(recipes);
   const ustensilesKeywordsSection = document.querySelector(
     ".dropdown-ustensiles--keywords"
   );
 
-  displayDropdownKeywords(ustensilesKeywords, ustensilesKeywordsSection);
+  displayDropdownKeywords(
+    ustensilesKeywords,
+    ustensilesKeywordsSelected,
+    ustensilesKeywordsSection
+  );
 }
 
-async function displayDropdownAppareils(recipes) {
+async function displayDropdownAppareils(recipes, appareilsKeywordsSelected) {
   const appareilsKeywords = await getAppareils(recipes);
   const appareilsKeywordsSection = document.querySelector(
     ".dropdown-appareils--keywords"
   );
 
-  displayDropdownKeywords(appareilsKeywords, appareilsKeywordsSection);
+  displayDropdownKeywords(
+    appareilsKeywords,
+    appareilsKeywordsSelected,
+    appareilsKeywordsSection
+  );
 }
 
 function initDropdowns() {

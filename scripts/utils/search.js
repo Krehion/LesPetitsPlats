@@ -87,7 +87,12 @@ function applianceSearch(recipes, applianceText) {
   return applianceFilteredRecipes;
 }
 
-function search(recipes) {
+function search(
+  recipes,
+  ingredientsKeywordsSelected,
+  ustensilesKeywordsSelected,
+  appareilsKeywordsSelected
+) {
   // Get search trigger elements
   const mainSearchButton = document.querySelector(".search--icon");
   const ingredientSearchButtons = document.querySelectorAll(
@@ -104,37 +109,74 @@ function search(recipes) {
   mainSearchButton.addEventListener("click", (event) => {
     event.preventDefault();
     const newRecipes = mainSearch(recipes); // Get newRecipes from mainSearch
-    run(newRecipes); // Pass newRecipes to run
+    console.log("Main search triggered:", newRecipes);
+    run(
+      newRecipes,
+      ingredientsKeywordsSelected,
+      ustensilesKeywordsSelected,
+      appareilsKeywordsSelected
+    ); // Pass newRecipes to run
   });
 
   ingredientSearchButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
-      const ingredientText = event.target.textContent.trim().toLowerCase();
+      const ingredientText = event.target.textContent.trim().toLowerCase(); // Normalize to lowercase
+      // add ingredientText to ingredientsKeywordsSelected array
+      if (!ingredientsKeywordsSelected.includes(ingredientText)) {
+        ingredientsKeywordsSelected.push(ingredientText);
+      }
+      console.log("Ingredient selected:", ingredientText);
+      console.log(
+        "Updated ingredientsKeywordsSelected:",
+        ingredientsKeywordsSelected
+      );
       const newRecipes = ingredientSearch(recipes, ingredientText);
-      run(newRecipes);
+      console.log("New recipes after ingredient search:", newRecipes);
+      run(
+        newRecipes,
+        ingredientsKeywordsSelected,
+        ustensilesKeywordsSelected,
+        appareilsKeywordsSelected
+      );
     });
   });
 
   ustensilSearchButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
-      const ustensilText = event.target.textContent.trim().toLowerCase();
+      const ustensilText = event.target.textContent.trim().toLowerCase(); // Normalize to lowercase
       const newRecipes = ustensilSearch(recipes, ustensilText);
-      run(newRecipes);
+      console.log("Ustensil selected:", ustensilText);
+      console.log(
+        "Updated ustensilesKeywordsSelected:",
+        ustensilesKeywordsSelected
+      );
+      run(
+        newRecipes,
+        ingredientsKeywordsSelected,
+        ustensilesKeywordsSelected,
+        appareilsKeywordsSelected
+      );
     });
   });
 
   applianceSearchButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
-      const applianceText = event.target.textContent.trim().toLowerCase();
+      const applianceText = event.target.textContent.trim().toLowerCase(); // Normalize to lowercase
       const newRecipes = applianceSearch(recipes, applianceText);
-      run(newRecipes);
+      console.log("Appliance selected:", applianceText);
+      console.log(
+        "Updated appareilsKeywordsSelected:",
+        appareilsKeywordsSelected
+      );
+      run(
+        newRecipes,
+        ingredientsKeywordsSelected,
+        ustensilesKeywordsSelected,
+        appareilsKeywordsSelected
+      );
     });
   });
 }
-
-// TO DO :
-// removing a label refreshes the list of filters and the display depending on it
-// fix appearance of selected filters in dropdown lists : they should have the class "dropdown--keywords--container__selected"

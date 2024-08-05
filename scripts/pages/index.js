@@ -19,15 +19,20 @@ async function displayRecipes(recipes) {
   });
 }
 
-async function run(recipes) {
+async function run(
+  recipes,
+  ingredientsKeywordsSelected,
+  ustensilesKeywordsSelected,
+  appareilsKeywordsSelected
+) {
   // Empty recipes section, keywords lists, recipes counter
   emptyAll();
   // Display dynamic elements
   await displayRecipes(recipes);
   recipeCounter();
-  await displayDropdownIngredients(recipes);
-  await displayDropdownUstensiles(recipes);
-  await displayDropdownAppareils(recipes);
+  await displayDropdownIngredients(recipes, ingredientsKeywordsSelected);
+  await displayDropdownUstensiles(recipes, ustensilesKeywordsSelected);
+  await displayDropdownAppareils(recipes, appareilsKeywordsSelected);
   // Handle dropdowns' behaviour
   initDropdowns();
   // Call manageLabels now that triggering elements are initialized
@@ -35,18 +40,32 @@ async function run(recipes) {
   // Display error message if recipes is empty
   displayEmptyResultMessage(recipes);
   // Call search function
-  search(recipes);
+  search(
+    recipes,
+    ingredientsKeywordsSelected,
+    ustensilesKeywordsSelected,
+    appareilsKeywordsSelected
+  );
 }
 
 async function init() {
   // Fetch recipes' data
   const recipes = await getRecipes();
+  // Initialize "selected" content parameters
+  let ingredientsKeywordsSelected = [];
+  let ustensilesKeywordsSelected = [];
+  let appareilsKeywordsSelected = [];
 
   // Display global dynamic items
   displayCancelSearchMain();
 
   // Display dynamic content depending on the recipes
-  run(recipes);
+  run(
+    recipes,
+    ingredientsKeywordsSelected,
+    ustensilesKeywordsSelected,
+    appareilsKeywordsSelected
+  );
 }
 
 init();
