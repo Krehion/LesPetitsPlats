@@ -116,7 +116,7 @@
         order: 2;
 
         .fa-circle-xmark {
-          visibility: hidden;
+          display: none;
         }
 
         &:hover {
@@ -137,14 +137,14 @@
           align-items: center;
 
           .fa-circle-xmark {
-            visibility: hidden;
+            display: none;
           }
 
           &:hover {
             font-weight: 700;
 
             .fa-circle-xmark {
-              visibility: visible;
+              display: inline-block;
             }
           }
         }

@@ -218,7 +218,7 @@ header .search--icon:hover {
 .filters .dropdown .dropdown-appareils--keywords--container .fa-circle-xmark,
 .filters .dropdown .dropdown-ustensiles--keywords--container .fa-circle-xmark,
 .filters .dropdown .dropdown--keywords--container .fa-circle-xmark {
-  visibility: hidden;
+  display: none;
 }
 .filters .dropdown .dropdown-ingredients--keywords--container:hover,
 .filters .dropdown .dropdown-appareils--keywords--container:hover,
@@ -246,7 +246,7 @@ header .search--icon:hover {
 .filters .dropdown .dropdown-appareils--keywords--container__selected .fa-circle-xmark,
 .filters .dropdown .dropdown-ustensiles--keywords--container__selected .fa-circle-xmark,
 .filters .dropdown .dropdown--keywords--container__selected .fa-circle-xmark {
-  visibility: hidden;
+  display: none;
 }
 .filters .dropdown .dropdown-ingredients--keywords--container__selected:hover,
 .filters .dropdown .dropdown-appareils--keywords--container__selected:hover,
@@ -258,7 +258,7 @@ header .search--icon:hover {
 .filters .dropdown .dropdown-appareils--keywords--container__selected:hover .fa-circle-xmark,
 .filters .dropdown .dropdown-ustensiles--keywords--container__selected:hover .fa-circle-xmark,
 .filters .dropdown .dropdown--keywords--container__selected:hover .fa-circle-xmark {
-  visibility: visible;
+  display: inline-block;
 }
 .filters .total-recipes {
   font-family: "Anton", sans-serif;
