@@ -109,7 +109,6 @@ function search(
   mainSearchButton.addEventListener("click", (event) => {
     event.preventDefault();
     const newRecipes = mainSearch(recipes); // Get newRecipes from mainSearch
-    console.log("Main search triggered:", newRecipes);
     run(
       newRecipes,
       ingredientsKeywordsSelected,
@@ -126,13 +125,7 @@ function search(
       if (!ingredientsKeywordsSelected.includes(ingredientText)) {
         ingredientsKeywordsSelected.push(ingredientText);
       }
-      console.log("Ingredient selected:", ingredientText);
-      console.log(
-        "Updated ingredientsKeywordsSelected:",
-        ingredientsKeywordsSelected
-      );
       const newRecipes = ingredientSearch(recipes, ingredientText);
-      console.log("New recipes after ingredient search:", newRecipes);
       run(
         newRecipes,
         ingredientsKeywordsSelected,
@@ -145,13 +138,11 @@ function search(
   ustensilSearchButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
-      const ustensilText = event.target.textContent.trim().toLowerCase(); // Normalize to lowercase
+      const ustensilText = event.target.textContent.trim().toLowerCase();
+      if (!ustensilesKeywordsSelected.includes(ustensilText)) {
+        ustensilesKeywordsSelected.push(ustensilText);
+      }
       const newRecipes = ustensilSearch(recipes, ustensilText);
-      console.log("Ustensil selected:", ustensilText);
-      console.log(
-        "Updated ustensilesKeywordsSelected:",
-        ustensilesKeywordsSelected
-      );
       run(
         newRecipes,
         ingredientsKeywordsSelected,
@@ -164,13 +155,11 @@ function search(
   applianceSearchButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
-      const applianceText = event.target.textContent.trim().toLowerCase(); // Normalize to lowercase
+      const applianceText = event.target.textContent.trim().toLowerCase();
+      if (!appareilsKeywordsSelected.includes(applianceText)) {
+        appareilsKeywordsSelected.push(applianceText);
+      }
       const newRecipes = applianceSearch(recipes, applianceText);
-      console.log("Appliance selected:", applianceText);
-      console.log(
-        "Updated appareilsKeywordsSelected:",
-        appareilsKeywordsSelected
-      );
       run(
         newRecipes,
         ingredientsKeywordsSelected,

@@ -58,9 +58,6 @@ function displayDropdownKeywords(
   itemKeywordsSelected,
   itemKeywordsSection
 ) {
-  console.log("Displaying keywords for section:", itemKeywordsSection);
-  console.log("Selected keywords:", itemKeywordsSelected);
-
   itemKeywordsSection.innerHTML = ""; // Clear existing content
 
   itemKeywords.forEach((item) => {
@@ -69,12 +66,10 @@ function displayDropdownKeywords(
       const keywordModel = dropdownKeywordSelectedTemplate(item);
       const keywordDOM = keywordModel.getKeywordSelectedDOM();
       itemKeywordsSection.appendChild(keywordDOM);
-      console.log("Added selected keyword:", item);
     } else {
       const keywordModel = dropdownKeywordTemplate(item);
       const keywordDOM = keywordModel.getKeywordDOM();
       itemKeywordsSection.appendChild(keywordDOM);
-      console.log("Added unselected keyword:", item);
     }
   });
 }
@@ -91,7 +86,6 @@ async function displayDropdownIngredients(
     ".dropdown-ingredients--keywords"
   );
 
-  console.log("Displaying dropdown ingredients");
   displayDropdownKeywords(
     ingredientsKeywords,
     ingredientsKeywordsSelected,
