@@ -36,7 +36,11 @@ async function run(
   // Handle dropdowns' behaviour
   initDropdowns();
   // Call manageLabels now that triggering elements are initialized
-  manageLabels();
+  manageLabels(
+    ingredientsKeywordsSelected,
+    ustensilesKeywordsSelected,
+    appareilsKeywordsSelected
+  );
   // Display error message if recipes is empty
   displayEmptyResultMessage(recipes);
   // Call search function
