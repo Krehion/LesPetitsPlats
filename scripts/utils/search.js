@@ -141,6 +141,31 @@ function applianceRemove(recipes, appareilsKeywordsSelected) {
   return finalFilteredRecipes;
 }
 
+function ustensilRemove(recipes, ustensilesKeywordsSelected) {
+  const filteredRecipesSet = new Set();
+
+  recipes.forEach((recipe) => {
+    let isValid = true;
+
+    ustensilesKeywordsSelected.forEach((ustensilText) => {
+      const recipeHasUstensil = recipe.ustensils.some((item) =>
+        item.ustensil.toLowerCase().includes(ustensilText.toLowerCase())
+      );
+
+      if (!recipeHasUstensil) {
+        isValid = false;
+      }
+    });
+
+    if (isValid) {
+      filteredRecipesSet.add(recipe);
+    }
+  });
+
+  const finalFilteredRecipes = Array.from(filteredRecipesSet);
+  return finalFilteredRecipes;
+}
+
 function search(
   recipes,
   ingredientsKeywordsSelected,
@@ -163,6 +188,9 @@ function search(
   );
   const applianceRemoveButtons = document.querySelectorAll(
     ".dropdown-appareils--keywords .dropdown--keywords--container__selected, .active-appareils .active-labels--label"
+  );
+  const ustensilRemoveButtons = document.querySelectorAll(
+    ".dropdown-ustensiles--keywords .dropdown--keywords--container__selected, .active-ustensiles .active-labels--label"
   );
 
   // Add event listeners
@@ -242,8 +270,8 @@ function search(
         ingredientsKeywordsSelected = ingredientsKeywordsSelected.filter(
           (item) => item !== buttonText
         );
-        // Refresh the recipes list based on the remaining selected ingredients
-        const originalRecipes = await getRecipes(); // Make sure to use a fresh copy
+        // Refresh the displayed recipes list based on the remaining selected ingredients
+        const originalRecipes = await getRecipes(); // To be changed
         const newRecipes = ingredientRemove(
           originalRecipes,
           ingredientsKeywordsSelected
@@ -264,17 +292,14 @@ function search(
     button.addEventListener("click", async (event) => {
       event.preventDefault();
 
-      // Get the text content from the button
       const buttonElement = event.target.closest("button");
       const buttonText = buttonElement?.textContent.trim().toLowerCase();
 
       if (buttonText && buttonText !== "") {
-        // Remove the selected ingredient from the list
         appareilsKeywordsSelected = appareilsKeywordsSelected.filter(
           (item) => item !== buttonText
         );
-        // Refresh the recipes list based on the remaining selected ingredients
-        const originalRecipes = await getRecipes(); // Make sure to use a fresh copy
+        const originalRecipes = await getRecipes(); // To be changed
         const newRecipes = applianceRemove(
           originalRecipes,
           appareilsKeywordsSelected
@@ -287,6 +312,34 @@ function search(
         );
       } else {
         console.warn("Appliance text not found or empty.");
+      }
+    });
+  });
+
+  ustensilRemoveButtons.forEach((button) => {
+    button.addEventListener("click", async (event) => {
+      event.preventDefault();
+
+      const buttonElement = event.target.closest("button");
+      const buttonText = buttonElement?.textContent.trim().toLowerCase();
+
+      if (buttonText && buttonText !== "") {
+        ustensilesKeywordsSelected = ustensilesKeywordsSelected.filter(
+          (item) => item !== buttonText
+        );
+        const originalRecipes = await getRecipes(); // To be changed
+        const newRecipes = ustensilRemove(
+          originalRecipes,
+          ustensilesKeywordsSelected
+        );
+        run(
+          newRecipes,
+          ingredientsKeywordsSelected,
+          ustensilesKeywordsSelected,
+          appareilsKeywordsSelected
+        );
+      } else {
+        console.warn("Ustensil text not found or empty.");
       }
     });
   });
