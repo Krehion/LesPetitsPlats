@@ -272,7 +272,6 @@ header .search--icon:hover {
   padding: 0 70px;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 25px;
   max-height: 101.2px;
 }
 .active-labels--label {
@@ -280,11 +279,17 @@ header .search--icon:hover {
   border: none;
   border-radius: 11px;
   padding: 13px 15px;
-  margin-bottom: 25px;
+  margin: 0 25px 25px 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 20px;
+}
+.active-labels .active-ingredients,
+.active-labels .active-appareils,
+.active-labels .active-ustensiles {
+  display: flex;
+  flex-direction: row;
 }
 
 .recipes {

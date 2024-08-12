@@ -1,20 +1,26 @@
 .active-labels {
-	display: flex;
-	padding: 0 70px;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 25px;
-	max-height: 101.2px;
+  display: flex;
+  padding: 0 70px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-height: 101.2px;
 
-	&--label {
-		background: $primary;
-		border: none;
-		border-radius: 11px;
-		padding: 13px 15px;
-		margin-bottom: 25px;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: 20px;
-	}
+  &--label {
+    background: $primary;
+    border: none;
+    border-radius: 11px;
+    padding: 13px 15px;
+    margin: 0 25px 25px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .active-ingredients,
+  .active-appareils,
+  .active-ustensiles {
+    display: flex;
+    flex-direction: row;
+  }
 }
