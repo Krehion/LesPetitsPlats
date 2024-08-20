@@ -5,7 +5,7 @@ function mainSearch(recipes) {
 
   if (userInput.length >= 3) {
     errorMessage.style.display = "none";
-    const filteredRecipes = filterRecipes(recipes, userInput);
+    const filteredRecipes = filterRecipesMainSearch(recipes, userInput);
     return filteredRecipes; // Return the filtered recipes
   } else {
     // display error message "Veuillez entrer au minimum 3 caractères"
@@ -14,7 +14,7 @@ function mainSearch(recipes) {
   }
 }
 
-function filterRecipes(recipes, userInput) {
+function filterRecipesMainSearch(recipes, userInput) {
   const filteredRecipesSet = new Set();
 
   recipes.forEach((recipe) => {
@@ -87,83 +87,31 @@ function applianceSearch(recipes, applianceText) {
   return applianceFilteredRecipes;
 }
 
-function ingredientRemove(recipes, ingredientsKeywordsSelected) {
-  const filteredRecipesSet = new Set();
-
-  recipes.forEach((recipe) => {
-    // Assume the recipe is valid unless proven otherwise
-    let isValid = true;
-
-    // Check if the recipe includes all remaining selected ingredients
-    ingredientsKeywordsSelected.forEach((ingredientText) => {
-      const recipeHasIngredient = recipe.ingredients.some((item) =>
-        item.ingredient.toLowerCase().includes(ingredientText.toLowerCase())
-      );
-
-      // If the recipe doesn't have one of the ingredients, mark it as invalid
-      if (!recipeHasIngredient) {
-        isValid = false;
-      }
-    });
-
-    // If valid, add the recipe to the filteredRecipesSet
-    if (isValid) {
-      filteredRecipesSet.add(recipe);
-    }
+function filterByAllCriteria(
+  recipes,
+  ingredientsKeywordsSelected,
+  appareilsKeywordsSelected,
+  ustensilesKeywordsSelected
+) {
+  return recipes.filter((recipe) => {
+    // Check if the recipe matches all selected ingredients
+    const hasAllIngredients = ingredientsKeywordsSelected.every(
+      (ingredientText) =>
+        recipe.ingredients.some((item) =>
+          item.ingredient.toLowerCase().includes(ingredientText)
+        )
+    );
+    // Check if the recipe matches all selected appliances
+    const hasAllAppliances = appareilsKeywordsSelected.every((applianceText) =>
+      recipe.appliance.toLowerCase().includes(applianceText)
+    );
+    // Check if the recipe matches all selected utensils
+    const hasAllUstensils = ustensilesKeywordsSelected.every((ustensilText) =>
+      recipe.ustensils.some((item) => item.toLowerCase().includes(ustensilText))
+    );
+    // Return true only if the recipe matches all selected criteria
+    return hasAllIngredients && hasAllAppliances && hasAllUstensils;
   });
-
-  const finalFilteredRecipes = Array.from(filteredRecipesSet);
-  return finalFilteredRecipes;
-}
-
-function applianceRemove(recipes, appareilsKeywordsSelected) {
-  const filteredRecipesSet = new Set();
-
-  recipes.forEach((recipe) => {
-    let isValid = true;
-
-    appareilsKeywordsSelected.forEach((applianceText) => {
-      const recipeHasAppliance = recipe.appliance.some((item) =>
-        item.appliance.toLowerCase().includes(applianceText.toLowerCase())
-      );
-
-      if (!recipeHasAppliance) {
-        isValid = false;
-      }
-    });
-
-    if (isValid) {
-      filteredRecipesSet.add(recipe);
-    }
-  });
-
-  const finalFilteredRecipes = Array.from(filteredRecipesSet);
-  return finalFilteredRecipes;
-}
-
-function ustensilRemove(recipes, ustensilesKeywordsSelected) {
-  const filteredRecipesSet = new Set();
-
-  recipes.forEach((recipe) => {
-    let isValid = true;
-
-    ustensilesKeywordsSelected.forEach((ustensilText) => {
-      const recipeHasUstensil = recipe.ustensils.some((item) =>
-        item.ustensil.toLowerCase().includes(ustensilText.toLowerCase())
-      );
-
-      if (!recipeHasUstensil) {
-        isValid = false;
-      }
-    });
-
-    if (isValid) {
-      filteredRecipesSet.add(recipe);
-    }
-  });
-
-  const finalFilteredRecipes = Array.from(filteredRecipesSet);
-  return finalFilteredRecipes;
 }
 
 function search(
@@ -266,16 +214,19 @@ function search(
       const buttonText = buttonElement?.textContent.trim().toLowerCase();
 
       if (buttonText && buttonText !== "") {
-        // Remove the selected ingredient from the list
         ingredientsKeywordsSelected = ingredientsKeywordsSelected.filter(
           (item) => item !== buttonText
         );
-        // Refresh the displayed recipes list based on the remaining selected ingredients
-        const originalRecipes = await getRecipes(); // To be changed
-        const newRecipes = ingredientRemove(
+
+        const originalRecipes = await getRecipes();
+        console.log("Original Recipes:", originalRecipes);
+        const newRecipes = filterByAllCriteria(
           originalRecipes,
-          ingredientsKeywordsSelected
+          ingredientsKeywordsSelected,
+          appareilsKeywordsSelected,
+          ustensilesKeywordsSelected
         );
+
         run(
           newRecipes,
           ingredientsKeywordsSelected,
@@ -292,6 +243,7 @@ function search(
     button.addEventListener("click", async (event) => {
       event.preventDefault();
 
+      // Get the text content from the button
       const buttonElement = event.target.closest("button");
       const buttonText = buttonElement?.textContent.trim().toLowerCase();
 
@@ -299,11 +251,16 @@ function search(
         appareilsKeywordsSelected = appareilsKeywordsSelected.filter(
           (item) => item !== buttonText
         );
-        const originalRecipes = await getRecipes(); // To be changed
-        const newRecipes = applianceRemove(
+
+        const originalRecipes = await getRecipes();
+        console.log("Original Recipes:", originalRecipes);
+        const newRecipes = filterByAllCriteria(
           originalRecipes,
-          appareilsKeywordsSelected
+          ingredientsKeywordsSelected,
+          appareilsKeywordsSelected,
+          ustensilesKeywordsSelected
         );
+
         run(
           newRecipes,
           ingredientsKeywordsSelected,
@@ -311,7 +268,7 @@ function search(
           appareilsKeywordsSelected
         );
       } else {
-        console.warn("Appliance text not found or empty.");
+        console.warn("Ingredient text not found or empty.");
       }
     });
   });
@@ -320,6 +277,7 @@ function search(
     button.addEventListener("click", async (event) => {
       event.preventDefault();
 
+      // Get the text content from the button
       const buttonElement = event.target.closest("button");
       const buttonText = buttonElement?.textContent.trim().toLowerCase();
 
@@ -327,11 +285,15 @@ function search(
         ustensilesKeywordsSelected = ustensilesKeywordsSelected.filter(
           (item) => item !== buttonText
         );
-        const originalRecipes = await getRecipes(); // To be changed
-        const newRecipes = ustensilRemove(
+
+        const originalRecipes = await getRecipes();
+        const newRecipes = filterByAllCriteria(
           originalRecipes,
+          ingredientsKeywordsSelected,
+          appareilsKeywordsSelected,
           ustensilesKeywordsSelected
         );
+
         run(
           newRecipes,
           ingredientsKeywordsSelected,
@@ -339,7 +301,7 @@ function search(
           appareilsKeywordsSelected
         );
       } else {
-        console.warn("Ustensil text not found or empty.");
+        console.warn("Ingredient text not found or empty.");
       }
     });
   });
