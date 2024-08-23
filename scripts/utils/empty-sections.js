@@ -10,9 +10,10 @@ function emptyCounter() {
 
 function emptyKeywordsLists() {
   const keywordsLists = document.querySelectorAll(".keywords-list");
-  keywordsLists.forEach((keywordsList) => {
+  for (let i = 0; i < keywordsLists.length; i++) {
+    const keywordsList = keywordsLists[i];
     keywordsList.innerHTML = "";
-  });
+  }
 }
 
 function emptyAll() {
