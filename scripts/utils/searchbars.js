@@ -1,3 +1,9 @@
+function validInput(inputValue, searchInput) {
+  // Replace all invalid characters with an empty string
+  let regExInvalidCharacters = new RegExp("[^A-Za-zÀ-ÿ\\s]", "g");
+  searchInput.value = inputValue.replace(regExInvalidCharacters, "");
+}
+
 // Main searchbar
 
 function displayCancelSearchMain() {
@@ -6,6 +12,9 @@ function displayCancelSearchMain() {
   const cancelInput = document.querySelector(".search--cancel");
 
   searchInput.addEventListener("input", () => {
+    const inputValue = searchInput.value;
+    validInput(inputValue, searchInput);
+
     if (searchInput.value.length > 0) {
       cancelContainer.style.display = "inline-block";
     } else {
@@ -74,6 +83,10 @@ function keywordsInputFilter() {
 
     // Add input event listener to the current search input
     searchInput.addEventListener("input", function () {
+      const inputValue = searchInput.value;
+      validInput(inputValue, searchInput);
+
+      // If the input is valid, filter the keywords
       const filter = searchInput.value.toLowerCase();
       keywords.forEach(function (keyword) {
         const text = keyword.textContent.toLowerCase();
